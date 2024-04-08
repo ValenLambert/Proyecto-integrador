@@ -6,6 +6,15 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var headerLogueadoRouter = require ("./routes/headerLogueado");
+var loginRouter = require ("./routes/login");
+var productAddRouter = require ("./routes/productAdd");
+var productRouter = require ("./routes/product");
+var profileEditRouter = require ("./routes/profileEdit");
+var profileRouter = require ("./routes/profile");
+var registerRouter = require ("./routes/register");
+var searchResultsRouter = require ("./routes/searchResults");
+
 
 var app = express();
 
@@ -13,12 +22,21 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', headerLogueadoRouter);
+app.use('/', loginRouter);
+app.use('/', productAddRouter);
+app.use('/', productRouter);
+app.use('/', profileEditRouter);
+app.use('/', profileRouter);
+app.use('/', registerRouter);
+app.use('/', searchResultsRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
