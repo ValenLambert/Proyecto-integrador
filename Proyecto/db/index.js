@@ -126,7 +126,7 @@ const db = {
       {
         imagen:  "https://http2.mlstatic.com/D_NQ_NP_2X_793318-MLA50937672063_072022-F.webp", 
         producto: "Bochas de Hockey", 
-        descripcion: "Pack X12 Bochas De Hockey Pelota Dimple Pvc Entrenamiento"
+        descripcion: "Pack X12 Bochas De Hockey Pelota Dimple Pvc Entrenamiento",
         comentarios: [
             {
               usuario: "Usuario1",
