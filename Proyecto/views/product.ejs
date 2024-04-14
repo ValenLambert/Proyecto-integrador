@@ -7,19 +7,17 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title">Nombre del producto</h2> 
+			<h2 class="products-title"><%= productos.producto %></h2> 
 			<p class="product-detail-description">
-				<a href="product-add.html">Editar</a>
+				<a href="productAdd.ejs">Editar</a>
 			</p>
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="../public/images/products/default-image.png" alt="" class="product-detail-img">
+					<img src="../public/images/products/img-cafetera-moulinex.jpg" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						Descripción corta del producto. En la página principal solo se ven 2 líneas de estar descripción.Lorem ipsum dolor,
-						sit amet consectetur adipisicing elit. Tae ipsam amet eum, totam dolore libero illo unde? Consectetur dolorem neque
-						veritatis.</p>
+						<%= productos.descrpicion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
@@ -27,42 +25,17 @@
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="profile.html">Nombre usuario: </a> </strong>
-								 Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore magnam, praesentium explicabo inventore molestias facilis labore. Fugit ipsa mollitia odit inventore consequuntur.</p>
-							</div>
+								<strong> <a href="profile.ejs">Nombre usuario: </a> <%= productos.comentarios.usuario %></strong>
+								<%= productos.comentarios[1].texto %>
+								</div>
 						</article>
 						<article>
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
-									<strong> <a href="profile.html">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="profile.html">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="profile.html">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="profile.html">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore</p>
+									<strong> <a href="profile.ejs">Nombre usuario: </a> <%= productos.comentarios.usuario %></strong>
+									<%= productos.comentarios[2].texto %>
+								</p>
 							</div>
 						</article>
 

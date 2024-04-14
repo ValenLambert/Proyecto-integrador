@@ -8,12 +8,12 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="https://via.placeholder.com/150" alt="foto de perfil" class="foto-perfil">
+				<img src="<%= db.usuario.foto %>" alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title">Nombre del usuario 
-						<a href="profile-edit.html">
+					<h1 class="main-title"> <%= db.usuario.usuario %>
+						<a href="profileEdit.ejs">
 							<i class="fas fa-cog"></i>
 						</a>
 					</h1>
@@ -21,6 +21,7 @@
 				</div>
 				<div>
 					<ul class="">
+						<li><%= db.usuario.email %></li>
 						<li>8 productos</li>
 						<li>200 seguidores</li>
 						<li>300 comentarios</li>
@@ -40,7 +41,7 @@
 			<!-- Show mis productos -->
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="product.ejs">
 						<figure class="product-box_image">
 							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
@@ -54,7 +55,7 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="product.ejs">
 						<figure class="product-box_image">
 							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
@@ -69,7 +70,7 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="product.ejs">
 						<figure class="product-box_image">
 							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
@@ -84,7 +85,7 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="product.ejs">
 						<figure class="product-box_image">
 							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
@@ -99,7 +100,7 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="product.ejs">
 						<figure class="product-box_image">
 							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
@@ -114,7 +115,7 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="product.ejs">
 						<figure class="product-box_image">
 							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
@@ -129,7 +130,7 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="product.ejs">
 						<figure class="product-box_image">
 							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
@@ -144,7 +145,7 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="product.ejs">
 						<figure class="product-box_image">
 							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
