@@ -26,11 +26,40 @@ body {
   font-size: 10px;
 }
 
+/*NUEVO STYLE */
+
+
 body {
-  font-family: var(--base-font-family);
-  font-weight: 300;
-  background-color: var(--light-gray);
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
+.TITULOS {
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #794a29;
+}
+.COLOR{
+  color: #76441e;
+  font-size: 32px;
+}
+
+.USUARIO{
+  color: #7d3f12fd ;
+}
+
+.PRODUCTOS{
+  color: #be6d3abb;
+}
+.DESCRIPCION{
+  
+}
+
+/*NUEVO STYLE */
+
 
 ul,
 ol {
@@ -68,7 +97,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: #f3d0b6;
 }
 
 .main-header_home-link,
@@ -105,7 +134,7 @@ hr {
   background-color: #ffffff;
   border: none;
   border-left: solid 1px var(--light-gray);
-  color: var(--gray);
+  color: #ff6f01ad;
   cursor: pointer;
 }
 
@@ -113,7 +142,7 @@ hr {
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
   background-color: var(--dark-blue);
-  color: #ffffff;
+  color: #ff6f01ad;
   font-size: 1.5em;
   border: none;
   border-radius: 4px;
@@ -171,7 +200,7 @@ hr {
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--gray);
+  color: #7d3f12fd;
 }
 
 .product-box {
