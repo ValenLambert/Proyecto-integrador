@@ -26,40 +26,6 @@ body {
   font-size: 10px;
 }
 
-/*NUEVO STYLE */
-
-
-body {
-  font-family: "Work Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-.TITULOS {
-  font-family: "Maven Pro", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  color: #794a29;
-}
-.COLOR{
-  color: #76441e;
-  font-size: 32px;
-}
-
-.USUARIO{
-  color: #7d3f12fd ;
-}
-
-.PRODUCTOS{
-  color: #be6d3abb;
-}
-.DESCRIPCION{
-  
-}
-
-/*NUEVO STYLE */
-
 
 ul,
 ol {
@@ -67,10 +33,11 @@ ol {
   margin: 0;
   padding: 0;
 }
-
+/*Subrrayo a los hipervinculos (con la etiqueta a, es decir, para la de los links)*/
 a {
   display: inline-block;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: rgba(147, 86, 2, 0.997); /*lo subrrayo de color marron */
   color: inherit;
 }
 
@@ -179,18 +146,6 @@ hr {
   border-bottom: solid 1px var(--gray);
 }
 
-
-
-/*====== Banner ======*/
-.banner {
-  background-image: url(/images/img-home-banner.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 100px;
-}
-
-
 /*====== Products ======*/
 .products-wrapper {
   margin-top: 30px;
@@ -288,9 +243,10 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color: #f3d0b6;
   padding: 20px 0;
   margin-top: 80px;
+
 }
 
 .footer-data {
@@ -557,3 +513,80 @@ textarea.form-input {
     margin: auto;
   }
 }
+
+
+/*NUEVO STYLE */
+
+body {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #ffd9bd7c;
+}
+.TITULOS {
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #794a29;
+  padding-right: 20px; 
+}
+
+#nombreDelSitio{
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 48PX;
+  margin: 2px;
+  border: solid 4px rgba(171, 100, 61, 0.688);
+  border-radius: 20px;
+  background-color: #e2823e7d;
+  text-decoration-color: rgba(171, 100, 61, 0.688);
+  display: flex;
+}
+
+.COLOR{
+  color: #76441e;
+  font-size: 32px;
+}
+
+.USUARIO{
+  color: #7d3f12fd ;
+}
+
+.PRODUCTOS{
+  color: #be6d3abb;
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.DESCRIPCION{
+  color: #39b54a;
+}
+
+.logo {
+    text-align: start;
+    margin: -24px;
+    width: 98px;
+    height: 80px;
+    border-radius: 28px;
+    position: absolute;
+    top: 20px;
+    right: 170px;
+}
+#fotoBanner{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 348px;
+}
+#sinSubrrayar{
+  text-decoration: none;
+}
+
+
+
+/*NUEVO STYLE */
