@@ -257,17 +257,16 @@ hr {
   color: var(--light-blue);
   font-size: 3.5em;
 }
-
+/*le agrando el tamanio y cambio el color de las frases del footer*/
 .footer-data h2 {
-  color: var(--gray);
-  font-size: 2.4em;
-  font-weight: 400;
+  color: rgb(96, 59, 11);
+  font-size: 2.6em;
+  font-weight: 500;
 }
-
 .footer-data p {
-  color: var(--gray);
-  font-size: 1.5em;
-  font-weight: 300;
+  color:  rgba(132, 84, 22, 0.775);
+  font-size: 1.8em;
+  font-weight: 500;
 }
 
 .sub-footer {
@@ -284,7 +283,7 @@ hr {
 
 /*====== Product Detail ======*/
 .product-detail {
-  background-color: #ffffff;
+  background-color: #e8b595f4;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -342,7 +341,7 @@ hr {
 }
 
 .actions-list i {
-  color: var(--green);
+  color: rgba(128, 60, 15, 0.728);
   font-size: 2em;
   margin-right: 15px;
 }
@@ -354,9 +353,13 @@ hr {
 }
 
 .buy-now-button {
-  background-color: var(--light-blue);
-  font-size: 1.6em;
-  color: #ffffff;
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  background-color: #985a2e93 ;
+  font-size: 1.8em;
+  color: #3b1901c8;
   padding: 15px;
   border-radius: 8px;
   border: none;
@@ -367,7 +370,7 @@ hr {
   border: none;
   border-radius: 8px;
   font-size: 1.2em;
-  color: #ffffff;
+  color: #63331093;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -376,18 +379,17 @@ hr {
 }
 
 .action-button.edit {
-  background-color: chocolate;
+  background-color: #6f2e00dd;
 }
 .action-button.delete {
-  background-color: rgb(248, 69, 37);
-}
+  background-color: #985a2e93}
 .comments {
   padding: 30px 15px 15px 0;
 }
 .comments article{
   margin-bottom: 7.5px;
   padding-bottom: 7.5px;
-  border-bottom: 1px solid #dcdcdc;
+  border-bottom: 2px solid #57311693;
   display: flex;
   justify-content: space-between;
 }
@@ -585,6 +587,14 @@ body {
 }
 #sinSubrrayar{
   text-decoration: none;
+}
+
+#integrantes{
+  color: #9c4d15dc;
+  font-style: italic;
+}
+.footer{
+  color: #76441e;
 }
 
 
