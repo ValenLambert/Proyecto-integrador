@@ -1,7 +1,7 @@
 <%- include('./partials/head') %>
 <body>
 	<!-- Header -->
-	<% include('./partials/headerLogueado') %>
+	<%- include('./partials/headerLogueado') %>
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -12,7 +12,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> 
-				<form action="/productAdd" method="GET">
+				<form action="/product" method="GET">
 					<label for="imagen">Imagen:</label>
 					<input type="file" id="imagen" name="imagen" accept="image/*" required><br><br>
 					

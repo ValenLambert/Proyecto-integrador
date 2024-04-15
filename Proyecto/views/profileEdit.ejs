@@ -2,7 +2,7 @@
 
 <body>
 	<!-- Header -->
-	<% include('./partials/headerLogueado') %>
+	<%- include('./partials/headerLogueado') %>
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -13,7 +13,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> 
-				<form action="/profileEdit" method="GET">
+				<form action="/users" method="GET">
 					<label for="email">Email:</label><br>
 					<input type="email" id="email" name="email" required><br>
 			
