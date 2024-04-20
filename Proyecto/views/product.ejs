@@ -7,8 +7,8 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title" id="editar" ><%= db.productos.producto %></h2> 
-			<p class="product-detail-description TITULOS" id="editar">
+			<h2 class="products-title" id="editar" ><%= db.productos[0].producto %></h2> 
+			<p class="product-detail-description TITULOS" id="editar"> 
 				<a href="/product/add"> Editar</a>
 			</p>
 		</div>
@@ -17,7 +17,7 @@
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src="images/products/raqueta.jpg" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%= db.productos[0].descrpicion %></p>
+						<%= db.productos[0].descripcion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
