@@ -5,7 +5,7 @@ const db = {
       contraseña: "hola12",
       nacimiento: "2004-07-09",
       documento: 46026423,
-      foto: "images/users/default-image.png", 
+      foto: "images/users/persona2.jpg", 
       
     },
     productos: [
