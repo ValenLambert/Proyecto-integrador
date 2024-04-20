@@ -367,13 +367,14 @@ hr {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  background-color: #985a2e93 ;
+  background-color: #985a2e93;
   font-size: 1.8em;
   color: #3b1901c8;
   padding: 15px;
   border-radius: 8px;
-  border: none;
+  border-color: #76441e;
   margin-bottom: 15px;
+  text-decoration: underline;
 }
 
 .action-button {
@@ -584,14 +585,14 @@ body {
   text-decoration: none;
 }
 
-.DESCRIPCION{
-  font-size: 1em;
-    width: 100%;
-    color: rgb(239, 175, 111);
-    height: 78px;
-    transition: 300ms;
-    overflow: hidden;
-
+.DESCRIPCION {
+  font-size: 2em;
+  width: 100%;
+  color: rgb(144 79 14);
+  height: 78px;
+  transition: 300ms;
+  overflow: hidden;
+  align-items: center;
 }
 
 .logo {

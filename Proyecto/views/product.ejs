@@ -7,7 +7,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title" id="editar" ><%= db.productos[0].producto %></h2> 
+			<h2 class="products-title" id="editar" ><%= db.productos[1].producto %></h2> 
 			<p class="product-detail-description TITULOS" id="editar"> 
 				<a href="/product/add"> Editar</a>
 			</p>
@@ -15,34 +15,28 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="images/products/raqueta.jpg" alt="" class="product-detail-img">
-					<p class="product-detail-description">
-						<%= db.productos[0].descripcion %></p>
+					<img src = "<%= db.productos[1].imagen %>" alt="" class="product-detail-img">
+					<p class="product-detail-description DESCRIPCION">
+						<%= db.productos[1].descripcion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<article>
-							<img src="images/users/persona1.jpg" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/users"></a> <%= db.productos[0].comentarios[0].usuario %> :</strong>
-								<%= db.productos[0].comentarios[0].texto %>
-								</div>
-						</article>
-						<article>
-							<img src="images/users/persona2.jpg" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/users"> </a> <%= db.productos[0].comentarios[1].usuario %> :</strong>
-									<%= db.productos[0].comentarios[1].texto %>
-								</p>
-							</div>
-						</article>
+						<% for (let i = 1; i <db.productos[1].comentarios.length; i++) { %>
+							<article>
+								<img src="<%=db.productos[1].comentarios[i].imagenPerfil%> " alt="">
+								<div class="data">
+									<p class="user">
+									<strong> <a href="/users"></a> <%= db.productos[1].comentarios[i].usuario %> :</strong>
+									<%= db.productos[1].comentarios[i].texto %>
+									</div>
+							</article>
+							<% } %>
+						
 					</section>
-					
-					<form action="" method="GET"> 
+
+					<form action="/product" method="GET"> 
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+						<button type="submit" class="buy-now-button ">AGREGAR COMENTARIO</button>
 					</form>
 					<hr>
 				</div>

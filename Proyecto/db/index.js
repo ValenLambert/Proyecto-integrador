@@ -17,12 +17,12 @@ const db = {
             {
               usuario: "Usuario1",
               texto: "¡Que bella raqueta!",
-              imagenPerfil: "images/users/default-image.png"
+              imagenPerfil: "images/users/persona1.jpg"
             },
             {
                 usuario: "Usuario3",
                 texto: "¿De donde sos?",
-                imagenPerfil: "images/users/default-image.png"
+                imagenPerfil: "images/users/persona2.jpg"
               } ]
       },
       {
@@ -33,8 +33,13 @@ const db = {
         {
           usuario: "Usuario1",
           texto: "¡Hermoso!",
-          imagenPerfil: "images/users/default-image.png"
+          imagenPerfil: "images/users/persona1.jpg"
+        },{
+          usuario: "Usuario3",
+          texto: "¿De donde sos?",
+          imagenPerfil: "images/users/persona2.jpg"
         } ]
+       
       }, 
       {
         imagen:  "https://http2.mlstatic.com/D_NQ_NP_2X_960553-MLA74108971857_012024-F.webp", 
@@ -44,7 +49,7 @@ const db = {
             {
               usuario: "Usuario1",
               texto: "¡¿Cuanto mide?!",
-              imagenPerfil: "images/users/default-image.png"
+              imagenPerfil: "images/users/persona2.jpg"
             } ]
       },
       {
