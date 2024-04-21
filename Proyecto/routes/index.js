@@ -6,9 +6,6 @@ let indexController = require ("../controllers/indexController");
 /* GET home page. */
 router.get ("/", indexController.index);
 
-router.get ("/buscar", function(req, res, next) {
-  let buscar = req.query.search;
-  res.send (buscar);
-});
+router.get ("/buscar", indexController.buscar);
 
 module.exports = router;

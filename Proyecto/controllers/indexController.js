@@ -5,7 +5,13 @@ const indexController= {
             return res.render("index", {
                 db: db.productos
             });
-        }
-    }
+        },
+        buscar: function(req, res, next) {
+            let buscar = req.query.search;
+            return res.render("searchResults", {
+                buscar: buscar, 
+                db: db
+            });
+    }}
 
 module.exports = indexController;
