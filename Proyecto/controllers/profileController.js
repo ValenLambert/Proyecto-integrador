@@ -39,13 +39,4 @@ let profileController = {
 
 };
 
-    
-
-    login: function (req, res) {
-        return res.render("login", {
-            db: db
-        });
-    },
-}
-
 module.exports = profileController;
