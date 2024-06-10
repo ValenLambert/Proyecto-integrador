@@ -33,11 +33,11 @@ module.exports = function(sequelize, dataTypes){
     User.associate = function (models) {
         User.hasMany(models.Products, {
             as: "products", //Como voy a llamar a la relación dentro del controlador
-            foreignKey: "id_usuario",
+            foreignKey: "id_delUusuario",
         }),
         User.hasMany(models.Comments, {
             as: "comentarios", //Como voy a llamar a la relación dentro del controlador
-            foreignKey: "id_usuario",
+            foreignKey: "id_delUsuario",
         })}
 
     return User;

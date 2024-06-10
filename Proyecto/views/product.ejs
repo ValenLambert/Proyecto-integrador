@@ -7,7 +7,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title" id="editar" ><%= db.productos[1].producto %></h2> 
+			<h2 class="products-title" id="editar" ><%= Products[1].nombre %></h2> 
 			<p class="product-detail-description TITULOS" id="editar"> 
 				<a href="/product/add"> Editar</a>
 			</p>
@@ -15,13 +15,14 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src = "<%= db.productos[1].imagen %>" alt="" class="product-detail-img">
+					<img src = "<%= Products[1].foto_producto %>" alt="" class="product-detail-img">
 					<p class="product-detail-description DESCRIPCION">
-						<%= db.productos[1].descripcion %></p>
+						<%= Products[1].descripcion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<% for (let i = 1; i <db.productos[1].comentarios.length; i++) { %>
+						<!-- arreglarlo
+						<% for (let i = 1; i <Products[1].comentarios.length; i++) { %>
 							<article>
 								<img src="<%=db.productos[1].comentarios[i].imagenPerfil%> " alt="">
 								<div class="data">
@@ -31,7 +32,7 @@
 									</div>
 							</article>
 							<% } %>
-						
+						-->
 					</section>
 
 					<form action="/product" method="GET"> 

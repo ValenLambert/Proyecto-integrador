@@ -8,24 +8,20 @@ module.exports = function (sequelize, dataTypes){
             primaryKey: true,
             type: dataTypes.INTEGER
         },
-        created_at : {
-            type: dataTypes.DATE,
-            allowNull:true,
-        },
         foto_producto: {
             type: dataTypes.STRING,
         },
         nombre: {
             type: dataTypes.STRING
         },
-        descipcion: {
+        descripcion: {
             type: dataTypes.STRING
         }
     }
 
     let config = {
         tableName : "productos",
-        timestamps:true, 
+        timestamps:false, 
         underscored: true, 
     
     };
@@ -39,7 +35,7 @@ module.exports = function (sequelize, dataTypes){
         });
         Products.hasMany(models.Comments, {
             as: "comentario",
-            foreignKey: "id_comentario"
+            foreignKey: "id_delProducto"
         })
     }
 

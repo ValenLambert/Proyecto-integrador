@@ -6,10 +6,6 @@ module.exports = function (sequelize, dataTypes){
             primaryKey: true,
             type: dataTypes.INTEGER
         },
-        created_at : {
-            type: dataTypes.DATE,
-            allowNull:true,
-        },
         comentario: {
             type: dataTypes.STRING,
         }
@@ -17,7 +13,7 @@ module.exports = function (sequelize, dataTypes){
 
     let config = {
         tableName : "comentarios",
-        timestamps:true, 
+        timestamps:false, 
         underscored: true, 
     
     };

@@ -1,4 +1,4 @@
-const db = require("../db/index");
+const db = require("../database/models");
 
   const headerLogueadoController = {
     index: function (req, res) {

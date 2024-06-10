@@ -13,24 +13,42 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12 alignForms"> 
-				<form action="/users/login" method="GET">
+				<form action="/users/register" method="POST">
 					<label class="label" for="email">Email:</label><br>
-					<input class="claseButton"  type="email" id="email" name="email" required><br>
+					<input class="claseButton"  type="email" id="email" name="email" value="<% locals.oldData && oldData.email ? oldData.email : " " %>" required><br>
+					<% if (locals.errors && errors.email) { %>
+                        <div class="error-msg"><%= errors.email.msg %></div>
+                    <% } %> 
 			
 					<label  class="label" for="usuario">Usuario:</label><br>
-					<input  class="claseButton" type="text" id="usuario" name="usuario" required><br>
+					<input  class="claseButton" type="text" id="usuario" name="usuario" value="<% locals.oldData && oldData.usuario ? oldData.usuario : " " %>" required><br>
+					<% if (locals.errors && errors.usuario) { %>
+                        <div class="error-msg"><%= errors.usuario.msg %></div>
+                    <% } %> 
 			
 					<label class="label" for="contraseña">Contraseña:</label><br>
-					<input  class="claseButton" type="password" id="contraseña" name="contraseña" required><br>
+					<input  class="claseButton" type="password" id="contraseña" name="contraseña" value="<% locals.oldData && oldData.contraseña ? oldData.contraseña : " " %>" required><br>
+					<% if (locals.errors && errors.contraseña) { %>
+                        <div class="error-msg"><%= errors.contraseña.msg %></div>
+                    <% } %> 
 			
 					<label  class="label" for="fecha_nacimiento">Fecha de nacimiento:</label><br>
-					<input  class="claseButton" type="date" id="fecha" name="fecha" required><br>
+					<input  class="claseButton" type="date" id="fecha" name="fecha" value="<% locals.oldData && oldData.fecha ? oldData.fecha : " " %>" required><br>
+					<% if (locals.errors && errors.fecha) { %>
+                        <div class="error-msg"><%= errors.fecha.msg %></div>
+                    <% } %> 
 			
 					<label  class="label" for="DNI">Nro de documento:</label><br>
-					<input  class="claseButton" type="number" id="DNI" name="DNI" required><br>
+					<input  class="claseButton" type="number" id="DNI" name="DNI"  value="<% locals.oldData && oldData.DNI ? oldData.DNI : " " %>" required><br>
+					<% if (locals.errors && errors.DNI) { %>
+                        <div class="error-msg"><%= errors.DNI.msg %></div>
+                    <% } %> 
 			
 					<label  class="label" for="foto">Foto de perfil:</label><br>
-					<input class="claseButton" type="text" id="foto" name="foto"><br> <br>
+					<input class="claseButton" type="text" id="foto" name="foto"  value="<% locals.oldData && oldData.foto ? oldData.foto : " " %>"><br> <br>
+					<% if (locals.errors && errors.foto) { %>
+                        <div class="error-msg"><%= errors.foto.msg %></div>
+                    <% } %> 
 			
 					<input class="claseButton" id="subrrayado" type="submit" value="Registrarse">
 				</form>

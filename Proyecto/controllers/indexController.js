@@ -1,10 +1,16 @@
-const db = require("../db/index");
+const db = require("../database/models");
 
 const indexController= {
         index: function (req, res) {
-            return res.render("index", {
-                db: db.productos
-            });
+            db.Products.findAll()
+            .then (function (data){
+                return res.render('index', { Products: data })
+
+            })
+            .catch(function(error){
+                console.log(error);
+            })
+
         },
         buscar: function(req, res, next) {
             let buscar = req.query.search;
@@ -12,6 +18,7 @@ const indexController= {
                 buscar: buscar, 
                 db: db
             });
-    }}
+    }
+}
 
 module.exports = indexController;
