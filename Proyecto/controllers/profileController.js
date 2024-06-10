@@ -1,4 +1,5 @@
-const db = require("../db/index");
+const db = require("../database/models");
+const user = db.User; 
 
 const profileController = {
     index: function (req, res) {
