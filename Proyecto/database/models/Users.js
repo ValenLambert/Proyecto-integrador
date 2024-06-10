@@ -32,8 +32,12 @@ modeule.exports = function(sequelize, dataTypes){
 
     User.associate = function (models) {
         User.hasMany(models.Products, {
-            as: "Products", //Como voy a llamar a la relación dentro del controlador
-            foreignKey: "id_producto",
+            as: "products", //Como voy a llamar a la relación dentro del controlador
+            foreignKey: "id_usuario",
+        }),
+        User.hasMany(models.Comments, {
+            as: "comentarios", //Como voy a llamar a la relación dentro del controlador
+            foreignKey: "id_usuario",
         })}
 
     return User;

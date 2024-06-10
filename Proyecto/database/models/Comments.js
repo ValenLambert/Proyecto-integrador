@@ -1,9 +1,7 @@
 module.exports = function (sequelize, dataTypes){
-
-    let alias = 'Products'; 
-
+    let alias = "Comments"; // nombrre de como llame a la tabla
     let cols = {
-        id_producto: {
+        id_comentario: {
             autoIncrement: true,
             primaryKey: true,
             type: dataTypes.INTEGER
@@ -12,35 +10,30 @@ module.exports = function (sequelize, dataTypes){
             type: dataTypes.DATE,
             allowNull:true,
         },
-        foto_producto: {
+        comentario: {
             type: dataTypes.STRING,
-        },
-        nombre: {
-            type: dataTypes.STRING
-        },
-        descipcion: {
-            type: dataTypes.STRING
         }
     }
 
     let config = {
-        tableName : "productos",
+        tableName : "comentarios",
         timestamps:true, 
         underscored: true, 
     
     };
 
-    const Products = sequelize.define(alias, cols, config);
+    const Comments = sequelize.define(alias, cols, config);
 
-    Products.associate = function(models){
-        Products.belongsTo(models.Users, {
+    Comments.associate = function(models){
+        Comments.belongsTo(models.Users, {
             as:'user', //relación dentro del controlador
             foreignKey:'id_delUsuario'
-        });
-        Products.hasMany(models.Comments, {
-            as: "comentario",
-            foreignKey: "id_comentario"
-        })
+        }),
+        Comments.belongsTo(models.Products, {
+            as:'products', //relación dentro del controlador
+            foreignKey:'id_delProducto'
+        },
+        )
     }
 
     return Products;
