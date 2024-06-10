@@ -33,7 +33,7 @@ module.exports = function (sequelize, dataTypes){
     const Products = sequelize.define(alias, cols, config);
 
     Products.associate = function(models){
-        Products.belongsTo(models.Users, {
+        Products.belongsTo(models.User, {
             as:'user', //relación dentro del controlador
             foreignKey:'id_delUsuario'
         });

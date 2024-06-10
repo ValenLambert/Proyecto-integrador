@@ -25,7 +25,7 @@ module.exports = function (sequelize, dataTypes){
     const Comments = sequelize.define(alias, cols, config);
 
     Comments.associate = function(models){
-        Comments.belongsTo(models.Users, {
+        Comments.belongsTo(models.User, { // es como lo llamo en el controlador 
             as:'user', //relación dentro del controlador
             foreignKey:'id_delUsuario'
         }),
@@ -36,6 +36,6 @@ module.exports = function (sequelize, dataTypes){
         )
     }
 
-    return Products;
+    return Comments;
 
 }
