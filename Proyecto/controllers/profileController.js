@@ -18,6 +18,9 @@ const profileController = {
         });
     },
 
+
+    
+
     login: function (req, res) {
         return res.render("login", {
             db: db
