@@ -10,6 +10,7 @@ router.get('/register', profileController.index);
 router.get("/login", profileController.login);
 // incluimos el middleware de validaciones entre el path y el controlador
 router.post('/register', registerValidation, profileController.store); 
+router.get ("/logout", profileController.logout);
 
 
 //router.get ("/login", profileController.login);

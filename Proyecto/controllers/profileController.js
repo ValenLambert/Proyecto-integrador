@@ -37,7 +37,18 @@ let profileController = {
                 .catch(function (err) {
                     console.log("Error al guardar el usuario", err);
                 });
-    }}
+    }},
+    logout: function(req,res){
+        //Destruir la sessión
+        req.session.destroy();
+
+        //Destruir la coockie
+         res.clearCookie('userId');
+        
+        //redireccionar a hone
+        return res.redirect('/')
+    }
+
 
 };
 
