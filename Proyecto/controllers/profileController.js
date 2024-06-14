@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 
 
 let profileController = {
+    login: function (req, res) {
+        return res.render('login')},
     index: function (req, res) {
         return res.render('register');
     },

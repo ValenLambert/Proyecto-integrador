@@ -1,54 +1,56 @@
-module.exports = function (sequelize, dataTypes){
-
-    let alias = 'Products'; 
-
+module.exports = function (sequelize, dataTypes) {
+    let alias = "Products";
     let cols = {
         id_producto: {
             autoIncrement: true,
             primaryKey: true,
             type: dataTypes.INTEGER
         },
+        id_delUsuario: {
+            type: dataTypes.INTEGER,
+            field: 'id_delUsuario'
+        },
         foto_producto: {
-            type: dataTypes.STRING,
+            type: dataTypes.TEXT,
         },
         nombre: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING(70),
         },
         descripcion: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING(200),
         },
-        createdAt:{
-            type: dataTypes.DATE
-        }, 
-
-        updatedAt:{
-            type: dataTypes.DATE
+        createdAt: {
+            type: dataTypes.DATE,
+            field: 'createdAt'
         },
-
-        deletedAt:{
-            type:dataTypes.DATE
+        updatedAt: {
+            type: dataTypes.DATE,
+            field: 'updatedAt'
         },
-    }
+        deletedAt: {
+            type: dataTypes.DATE,
+            field: 'deletedAt'
+        }
+    };
 
     let config = {
-        tableName : "productos",
-        timestamps:true, 
-        underscored: true, 
+        tableName: "productos",
+        timestamps: true,
+        underscored: false
     };
 
     const Products = sequelize.define(alias, cols, config);
 
-    Products.associate = function(models){
+    Products.associate = function (models) {
         Products.belongsTo(models.User, {
-            as:'user', //relación dentro del controlador
-            foreignKey:'id_delUsuario'
+            as: 'user',
+            foreignKey: 'id_delUsuario'
         });
         Products.hasMany(models.Comments, {
-            as: "comentario",
-            foreignKey: "id_delProducto"
-        })
-    }
+            as: 'comments',
+            foreignKey: 'id_delProducto'
+        });
+    };
 
     return Products;
-
-}
+};

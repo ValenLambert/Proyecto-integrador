@@ -1,80 +1,78 @@
 <%- include('./partials/head') %>
 
-	<!-- Header -->
-	<%- include('./partials/header') %>
-	<!-- /Header -->
-	<body>	
-	<!-- Banner -->
-	<div class="banner">
-		<img id="fotoBanner" src="images/banner.jpg" alt="Banner ">
-	</div>
-	<!-- /Banner -->
+<!-- Header -->
+<%- include('./partials/header') %>
+<!-- /Header -->
+<body>
+    <!-- Banner -->
+    <div class="banner">
+        <img id="fotoBanner" src="images/banner.jpg" alt="Banner ">
+    </div>
+    <!-- /Banner -->
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title TITULOS">Novedades</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<!-- FOR-->
-			<% for( let i = 0; i < 4; i++ ) { %>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/product">
-						<figure class="product-box_image">
-							<!-- dejamos esta como fija -->
-							<img src="<%= Products[i].foto_producto %>" alt="palo hockey">
-						</figure>
-						<article class="product-box_data">
-							<h2 class="PRODUCTOS"> <%= Products[i].nombre %></h2>
-							<p class="DESCRIPCION">  <%= Products[i].descripcion %> </p>
-							<!-- dejamos este comentario como fijo -->
-							<p class="DESCRIPCION"> Comentarios: 12 </p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<% } %>
-			<!-- FOR-->
-		</div>
-	</div>
-	<!-- /Novedades -->
-	<!-- Más comentados -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title TITULOS">Más comentados</h2>
-			</div>
-			<!-- Show the "ultimos" products-->  <!--Aca aparecen. todos lso productos, de forma "manual", uno por uno-->
-			<!-- FOR-->
-			<% for( let i = 5; i < 9; i++ ) { %>
-				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
-						<a href="/product">
-							<figure class="product-box_image">
-								<!-- dejamos esta imagen como fija -->
-								<img src="images/products/paloHockey.jpg" alt="palo hockey">
-							</figure>
-							<article class="product-box_data">
-								<h2 class="PRODUCTOS"> <%= Products[i].nombre%></h2>
-								<p class="DESCRIPCION">  <%= Products.descripcion[i] %> </p>
-								<!--dejamos este comentario como fijo -->
-								<p class="DESCRIPCION"> Comentarios: 12</p>
-							</article>
-						</a>
-					</section>
-				</div>
-				<% } %>
-				<!-- FOR-->
-			
-			
-		</div>
-	</div>
-	<!-- /Más comentados -->
+    <!-- Novedades -->
+    <div class="container products-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="products-title TITULOS">Novedades</h2>
+            </div>
+            <!-- Show the "ultimos" products -->
+            <!-- FOR-->
+            <% for (let i = 0; i < 4 && i < Products.length; i++) { %>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <section class="product-box">
+                    <a href="/product">
+                        <figure class="product-box_image">
+                            <!-- dejamos esta como fija -->
+                            <img src="<%= Products[i].foto_producto %>" alt="palo hockey">
+                        </figure>
+                        <article class="product-box_data">
+                            <h2 class="PRODUCTOS"><%= Products[i].nombre %></h2>
+                            <p class="DESCRIPCION"><%= Products[i].descripcion %></p>
+                            <!-- dejamos este comentario como fijo -->
+                            <p class="DESCRIPCION">Comentarios: 12</p>
+                        </article>
+                    </a>
+                </section>
+            </div>
+            <% } %>
+            <!-- FOR-->
+        </div>
+    </div>
+    <!-- /Novedades -->
+    <!-- Más comentados -->
+    <div class="container products-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="products-title TITULOS">Más comentados</h2>
+            </div>
+            <!-- Show the "ultimos" products--> <!--Aca aparecen todos los productos, de forma "manual", uno por uno-->
+            <!-- FOR-->
+            <% for (let i = 5; i < 9 && i < Products.length; i++) { %>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <section class="product-box">
+                    <a href="/product">
+                        <figure class="product-box_image">
+                            <!-- dejamos esta imagen como fija -->
+                            <img src="<%= Products[i].foto_producto %>" alt="palo hockey">
+                        </figure>
+                        <article class="product-box_data">
+                            <h2 class="PRODUCTOS"><%= Products[i].nombre %></h2>
+                            <p class="DESCRIPCION"><%= Products[i].descripcion %></p>
+                            <!-- dejamos este comentario como fijo -->
+                            <p class="DESCRIPCION">Comentarios: 12</p>
+                        </article>
+                    </a>
+                </section>
+            </div>
+            <% } %>
+            <!-- FOR-->
+        </div>
+    </div>
+    <!-- /Más comentados -->
 
-
-	<!-- footer -->
-<%- include('./partials/footer') %>
-</body>	
+    <!-- footer -->
+    <%- include('./partials/footer') %>
+</body>
 </html>
+

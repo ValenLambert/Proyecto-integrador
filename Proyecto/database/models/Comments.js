@@ -1,5 +1,5 @@
-module.exports = function (sequelize, dataTypes){
-    let alias = "Comments"; // nombrre de como llame a la tabla
+module.exports = function (sequelize, dataTypes) {
+    let alias = "Comments";
     let cols = {
         id_comentario: {
             autoIncrement: true,
@@ -9,40 +9,46 @@ module.exports = function (sequelize, dataTypes){
         comentario: {
             type: dataTypes.STRING,
         },
-        createdAt:{
-            type: dataTypes.DATE
-        }, 
-
-        updatedAt:{
-            type: dataTypes.DATE
+        id_delProducto: {
+            type: dataTypes.INTEGER,
+            field: 'id_delProducto'
         },
-
-        deletedAt:{
-            type:dataTypes.DATE
+        id_delUsuario: {
+            type: dataTypes.INTEGER,
+            field: 'id_delUsuario'
         },
-    }
+        createdAt: {
+            type: dataTypes.DATE,
+            field: 'createdAt'
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            field: 'updatedAt'
+        },
+        deletedAt: {
+            type: dataTypes.DATE,
+            field: 'deletedAt'
+        }
+    };
 
     let config = {
-        tableName : "comentarios",
-        timestamps:true, 
-        underscored: true, 
-    
+        tableName: "comentarios",
+        timestamps: true,
+        underscored: false
     };
 
     const Comments = sequelize.define(alias, cols, config);
 
-    Comments.associate = function(models){
-        Comments.belongsTo(models.User, { // es como lo llamo en el controlador 
-            as:'user', //relación dentro del controlador
-            foreignKey:'id_delUsuario'
-        }),
+    Comments.associate = function (models) {
+        Comments.belongsTo(models.User, {
+            as: 'user',
+            foreignKey: 'id_delUsuario'
+        });
         Comments.belongsTo(models.Products, {
-            as:'products', //relación dentro del controlador
-            foreignKey:'id_delProducto'
-        },
-        )
-    }
+            as: 'products',
+            foreignKey: 'id_delProducto'
+        });
+    };
 
     return Comments;
-
-}
+};
