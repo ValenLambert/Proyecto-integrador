@@ -35,7 +35,6 @@ module.exports = function(sequelize, dataTypes){
     };
     let config = {
         tableName : "usuarios",
-        timestamps: true, 
         underscored: true, 
     };
 
@@ -44,7 +43,7 @@ module.exports = function(sequelize, dataTypes){
     User.associate = function (models) {
         User.hasMany(models.Products, {
             as: "products", //Como voy a llamar a la relación dentro del controlador
-            foreignKey: "id_delUusuario",
+            foreignKey: "id_delUsuario",
         }),
         User.hasMany(models.Comments, {
             as: "comentarios", //Como voy a llamar a la relación dentro del controlador
