@@ -20,11 +20,22 @@ module.exports = function(sequelize, dataTypes){
         },
         foto: {
             type: dataTypes.STRING
-        }
+        },
+        createdAt:{
+            type: dataTypes.DATE
+        }, 
+
+        updatedAt:{
+            type: dataTypes.DATE
+        },
+
+        deletedAt:{
+            type:dataTypes.DATE
+        },
     };
     let config = {
         tableName : "usuarios",
-        timestamps: false, 
+        timestamps: true, 
         underscored: true, 
     };
 

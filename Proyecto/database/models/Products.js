@@ -16,12 +16,23 @@ module.exports = function (sequelize, dataTypes){
         },
         descripcion: {
             type: dataTypes.STRING
-        }
+        },
+        createdAt:{
+            type: dataTypes.DATE
+        }, 
+
+        updatedAt:{
+            type: dataTypes.DATE
+        },
+
+        deletedAt:{
+            type:dataTypes.DATE
+        },
     }
 
     let config = {
         tableName : "productos",
-        timestamps:false, 
+        timestamps:true, 
         underscored: true, 
     
     };
