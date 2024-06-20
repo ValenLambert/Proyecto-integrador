@@ -13,7 +13,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12 alignForms"> 
-				<form action="/users/register" method="POST">
+				<form action="/users/login" method="POST">
 					<label class="label" for="email">Email:</label><br>
 					<input class="claseButton"  type="email" id="email" name="email" value="<% locals.oldData && oldData.email ? oldData.email : " " %>" required><br>
 					<% if (locals.errors && errors.email) { %>

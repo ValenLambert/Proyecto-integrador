@@ -5,9 +5,17 @@ const bcrypt = require('bcryptjs');
 
 let profileController = {
     login: function (req, res) {
-        return res.render('login')},
+        if (req.session.user !== undefined) {
+            return res.redirect('/');
+        } else {
+            return res.render('login');
+        }},
     index: function (req, res) {
-        return res.render('register');
+        if (req.session.user !== undefined) {
+            return res.redirect('/');
+        } else {
+            return res.render('register');
+        }
     },
     store: function (req, res) {
          //obtenemos los restultados de las validaciones
@@ -32,7 +40,7 @@ let profileController = {
             db.User
                 .create(user)
                 .then(function (user) {
-                    return res.redirect("/login");
+                    return res.redirect("/users/login");
                 })
                 .catch(function (err) {
                     console.log("Error al guardar el usuario", err);

@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require("express-session")
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/profile');
@@ -23,6 +25,44 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session(
+  {
+    secret: "holaa",
+    resave: false,
+    saveUninitialized: true
+  }
+))
+app.use(function(req,res,next){
+  console.log("esn session middleware");
+  //console.log(req.session.user)
+  if(req.session.user != undefined){
+    res.locals.user = req.session.user;
+    console.log("entre en locals")
+    console.log(res.locals)
+    return next()
+  }
+  return next()
+})
+
+app.use(function(req,res,next){
+  if(req.cookies.userId != undefined && req.session.user == undefined){
+    let idDeLaCookie = req.cookies.userId;
+
+    db.User.findByPk(idDeLaCookie)
+    .then( function(user){
+      console.log("middleare de la cookie trasladando info")
+      req.session.user = user
+      console.log("en la cookie middleware")
+      res.locals.user = user;
+      return next()
+    })    
+    .catch(function(err){
+      console.log("error en cookies", err)
+    })
+  } else {
+    return next()
+  }
+})
 
 
 app.use('/loggeado', headerLogueadoRouter);
