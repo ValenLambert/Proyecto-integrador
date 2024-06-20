@@ -1,15 +1,24 @@
 const db = require("../database/models");
+const op = db.Sequelize.Op
 
 const productController= {
         index: function (req, res) {
-                db.Products.findAll()
-                .then (function (data){
-                    return res.render('product', { Products: data })
+            let id = req.params.id;
 
-                })
-                .catch(function(error){
-                    console.log(error);
-                })
+            db.Products.findByPk(id,
+                 {
+                include: [
+                  { association: 'user' },
+                   { association: 'comments' }
+              ]
+            })
+            .then(data => {
+                return res.render('product', {Products: data });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
         },
         add: function (req, res) {
                 db.Products.findAll()

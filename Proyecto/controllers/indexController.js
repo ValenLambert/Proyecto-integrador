@@ -4,7 +4,11 @@ const op = db.Sequelize.Op
 
 const indexController= {
         index: function (req, res) {
-            db.Products.findAll()
+            db.Products.findAll({
+                order: [
+                    ["createdAt", "DESC"]
+                ]
+            })
             .then (function (data){
                 return res.render('index', { Products: data })
 

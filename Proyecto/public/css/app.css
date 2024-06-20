@@ -299,10 +299,10 @@ hr {
 }
 
 .product-detail-img {
-  width: 70%;
-  display: block;
-  margin: auto;
-  border-radius: 8px;
+  width: 450px; /* Ancho fijo para todas las imágenes de perfil */
+  height: 450px; /* Altura fija para todas las imágenes de perfil */
+  object-fit: contain; /* Ajusta la imagen para cubrir el área asignada */
+  border-radius: 5%; /* Para bordes redondeados */
 }
 
 .product-detail-info {
