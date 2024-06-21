@@ -20,6 +20,7 @@ const productController= {
             })
 
         },
+
         add: function (req, res) {
                 db.Products.findAll()
                 .then (function (data){
@@ -29,7 +30,8 @@ const productController= {
                 .catch(function(error){
                     console.log(error);
                 })
-        }
+        },
+        
     }
 
 module.exports = productController

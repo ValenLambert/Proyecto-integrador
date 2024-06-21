@@ -1,8 +1,13 @@
 <%- include('./partials/head') %>
 
 <!-- Header -->
-<%- include('./partials/header') %>
+<% if (locals.user != undefined) { %>
+    <%- include('./partials/headerLogueado') %>
+<% } else { %>
+    <%- include('./partials/header') %>
+<% } %>
 <!-- /Header -->
+
 <body>
     <!-- Banner -->
     <div class="banner">

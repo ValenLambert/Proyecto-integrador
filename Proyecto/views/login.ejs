@@ -1,8 +1,13 @@
 <%- include('./partials/head') %>
 <body>
 	<!-- Header -->
-<%- include('./partials/header') %>
-	<!-- /Header -->
+<% if (locals.user != undefined) { %>
+    <%- include('./partials/headerLogueado') %>
+<% } else { %>
+    <%- include('./partials/header') %>
+<% } %>
+<!-- /Header -->
+
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
@@ -12,6 +17,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12 alignForms">  <br>
+
 				<form action="/users/login" method="POST" novalidate> 
 				
 				<label class="label" for="usuario"> Usuario (email):</label> <br> 
