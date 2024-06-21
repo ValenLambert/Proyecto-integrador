@@ -12,15 +12,23 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12 alignForms">  <br>
-				<form action="/users" method="GET"> 
+				<form action="/users/login" method="POST" novalidate> 
 				
-				<label class="label" for="usuario">Usuario (email):</label><br> 
-				<input class="claseButton" type="email" id="email" name="usuario" required> <br> <br>
+				<label class="label" for="usuario"> Usuario (email):</label> <br> 
+	 <!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
+				<input class="claseButton" type="email" id="email " name="email " placeholder="email "  value="<%= locals.oldData && oldData.email ? oldData.email :  null  %>"> 
+			<% if (locals.errors && errors.email) { %>
+			<div class = "error-msg"> <%= locals.errors.email.msg %> </div>
+			<% } %> 
 				
 				<!-- Campo para la contraseña -->
+				<br>
 				<label class="label" for="contraseña">Contraseña:</label><br> 
-				<input class="claseButton" type="password" id="contraseña" name="contraseña" required><br> 
-				
+				<input class="claseButton" type="password" id="contraseña"   placeholder="contraseña " name="contraseña" required><br> 
+				<% if (locals.errors && errors.password)  {   %>
+					<div class="error-msg"> <%= errors.password.msg  %>  </div> 
+                            <% }  %>    
+                 
 				<!-- Campo para recordar -->
 				<input class="label" type="checkbox" id="recordarme" name="recordarme">
 				<label id="recordarme" for="recordarme">Recordarme</label><br>  <br>

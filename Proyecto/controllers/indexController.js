@@ -1,4 +1,4 @@
-const db = require("../database/models");
+const db = require("../database/models"); // Para consultar la abse de datos. 
 const op = db.Sequelize.Op
 
 

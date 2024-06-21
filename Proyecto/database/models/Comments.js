@@ -1,5 +1,5 @@
 module.exports = function (sequelize, dataTypes) {
-    let alias = "Comments";
+    let alias = "Comments"; // mimso nombre qu ele del modelo
     let cols = {
         id_comentario: {
             autoIncrement: true,
@@ -37,7 +37,7 @@ module.exports = function (sequelize, dataTypes) {
         underscored: false
     };
 
-    const Comments = sequelize.define(alias, cols, config);
+    const Comments = sequelize.define(alias, cols, config); //mismo nombre que el del modelo
 
     Comments.associate = function (models) {
         Comments.belongsTo(models.User, {
