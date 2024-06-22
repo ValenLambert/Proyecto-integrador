@@ -91,33 +91,32 @@ let profileController = {
             })}
     },
     changes: function (req, res) {
-        const resultValidation =  validationResult(req)
-        // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body
-        if (!resultValidation.isEmpty()){
-           console.log("errores: ", JSON.stringify(resultValidation,null,4));
-           return res.render ("register", {
-               errors: resultValidation.mapped(),
-               oldData:req.body})
-       } else {
-            const id = req.params.id;
-            const { contraseña, ...usuario } = req.body; 
-
-            if (contraseña && contraseña !== undefined ) {
-                usuario.contraseña = contraseña;
-            }
-
-            db.User.update(usuario, {
-                where: {
-                    id_usuario: id
-                }
-            })
+        if (req.body.contraseña !== undefined) {
+            const resultValidation =  validationResult(req)
+            // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body
+            if (!resultValidation.isEmpty()){
+            console.log("errores: ", JSON.stringify(resultValidation,null,4));
+            return res.render ("register", {
+                errors: resultValidation.mapped(),
+                oldData:req.body})
+            } else {
+                const id = req.params.id;
+                const usuario = req.body; 
+                db.User.update(usuario, {
+                    where: {
+                        id_usuario: id
+                    }
+                })
                 .then(function (result) {
                     return res.redirect(`/users/perfil/${id}`)
                 })
                 .catch(function (err) {
                     console.log(err)
                 })
-     }},
+     }} else {
+        //poner para que se guarde todo emnos la contraseñaaaaa nose como AYUDA NINAAAA
+     }
+    },
     logout: function(req,res){
         req.session.destroy();
 
