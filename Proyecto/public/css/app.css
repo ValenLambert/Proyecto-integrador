@@ -299,8 +299,8 @@ hr {
 }
 
 .product-detail-img {
-  width: 450px; /* Ancho fijo para todas las imágenes de perfil */
-  height: 450px; /* Altura fija para todas las imágenes de perfil */
+  width: 350px; /* Ancho fijo para todas las imágenes de perfil */
+  height: 350px; /* Altura fija para todas las imágenes de perfil */
   object-fit: contain; /* Ajusta la imagen para cubrir el área asignada */
   border-radius: 5%; /* Para bordes redondeados */
 }
@@ -324,6 +324,7 @@ hr {
   line-height: 1.5;
   overflow: hidden;
   text-decoration: none;
+  background-color: #6666663d;
 }
 
 .product-detail-price {
