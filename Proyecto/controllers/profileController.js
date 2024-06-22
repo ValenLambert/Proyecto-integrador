@@ -26,9 +26,9 @@ let profileController = {
         })
         // luego del findOne viene el then:
         .then(function(user){
-            //if (user) {
-            let validPassword = bcrypt.compareSync ( req.body.password, user.password)
-            console.log("validpassword? : ", validPassword);
+          
+          let validPassword = bcrypt.compareSync ( req.body.password, user.password) 
+         console.log("validpassword? : ", validPassword); 
             // a la session le paso lo que acabo de buscar 
             req.session.user = user;
             // user es tood el objeto literal que nos trajo 
@@ -44,11 +44,6 @@ let profileController = {
         })
         } },
 
-        // if (req.session.user !== undefined) {
-        //     return res.redirect('/');
-        // } else {
-        //     return res.render('login');
-        // }},
 
         loggueado: function (req, res) {
             if (req.session.user !== undefined) {
