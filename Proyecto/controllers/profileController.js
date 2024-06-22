@@ -9,49 +9,41 @@ const bcrypt = require('bcryptjs');
 let profileController = {
     perfil: function (req,res)
          {res.send ("profile")},
-
-    login: function (req, res) {
-        // obtenemos los resultados de las validaciones:
-        const resultValidation = validationResult(req) // le paso el objeto de request 
-        if (!resultValidation.isEmpty()){
-            return res.render( "login", 
-            {errors: resultValidation.mapped(),
-                oldData: req.body
-            })
-        } else {
-            // Buscar el usuario que se quiere loguear 
-        users.findOne({
-            where:[{
-                email: req.body.email,
-            }],
-        })
-        // luego del findOne viene el then:
-        .then(function(user){
-          
-          let validPassword = bcrypt.compareSync ( req.body.password, user.password) 
-         console.log("validpassword? : ", validPassword); 
-            // a la session le paso lo que acabo de buscar 
-            req.session.user = user;
-            // user es tood el objeto literal que nos trajo 
-            //Si tildó el boton de recordame,  creamos la cookie. (como era un checkbox nos devuelve un booleano)
-            if (req.body.rememberme != undefined) {
-                // creamos la cookie:
-                res.cookie('userId', user.id, { maxAge: 1000 * 60 * 100 }) // --> la cookie a los cinco minutos expira
-            }
-            return res.redirect('/')
-        })
-        .catch (function(err){
-            console.log(err)
-        })
-        } },
-
-
+        
     loggueado: function (req, res) {
-            if (req.session.user !== undefined) {
+        if (req.session.user !== undefined) {
             return res.redirect('/');
         } else {
             return res.render('login');
         }},
+
+    login: function(req, res){
+        //obtenemos los restultados de las validaciones       
+        const resultValidation =  validationResult(req)
+        if (!resultValidation.isEmpty()){
+            return res.render ("login", {
+                errors: resultValidation.mapped(),
+                oldData:req.body})
+        } else  {
+            // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body         
+            // Buscamos el usuario que se quiere loguear.
+            db.User.findOne({
+                where: [{email: req.body.email}]
+            })
+            .then( function ( user ) {
+                //Seteamos la session con la info del usuario
+                req.session.user = user;          
+                //Si tildó recordame => creamos la cookie.
+                if(req.body.recordarme != undefined){
+                    res.cookie('userId', user.id, { maxAge: 1000 * 60 * 100})
+                }
+                return res.redirect('/');            
+            })
+            .catch( function(error) {
+                console.log(error)
+            }) 
+        }
+    },
 
     index: function (req, res) {
         if (req.session.user !== undefined) {
@@ -61,12 +53,15 @@ let profileController = {
         }
     },
     store: function (req, res) {
-         const resultValidation =  validationResult(req)
-         if (!resultValidation.isEmpty()){
-            return res.render ("register", {
-                errors: resultValidation.mapped(),
-                oldData:req.body})
-        } else {
+          //obtenemos los restultados de las validaciones
+          const resultValidation =  validationResult(req)
+          // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body
+          if (!resultValidation.isEmpty()){
+             console.log("errores: ", JSON.stringify(resultValidation,null,4));
+             return res.render ("register", {
+                 errors: resultValidation.mapped(),
+                 oldData:req.body})
+         } else {
            const user = {
                 email: req.body.email,
                 contraseña: bcrypt.hashSync(req.body.contraseña, 10),
@@ -75,13 +70,13 @@ let profileController = {
                 foto: req.body.foto
             };
             db.User
-                .create(user)
-                .then(function (user) {
-                    return res.redirect("/users/login"); 
-                })
-                .catch(function (err) {
-                    console.log("Error al guardar el usuario", err);
-                });
+            .create(user)
+            .then(function (user) {
+                return res.redirect("/users/login");
+            })
+            .catch(function (err) {
+                console.log("Error al guardar el usuario", err);
+            });
     }},
     logout: function(req,res){
         req.session.destroy();

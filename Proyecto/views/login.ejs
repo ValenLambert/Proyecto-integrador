@@ -22,7 +22,7 @@
 				
 				<label class="label" for="usuario"> Usuario (email):</label> <br> 
 	 <!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
-				<input class="claseButton" type="email" id="email " name="email " placeholder="email "  value="<%= locals.oldData && oldData.email ? oldData.email :  null  %>"> 
+				<input class="claseButton" type="email" id="email " name="email " placeholder="email "  value="<%= locals.oldData && oldData.email ? oldData.email : "" %>"> 
 			<% if (locals.errors && errors.email) { %>
 			<div class = "error-msg"> <%= locals.errors.email.msg %> </div>
 			<% } %> 
@@ -31,9 +31,9 @@
 				<br>
 				<label class="label" for="contraseña">Contraseña:</label><br> 
 				<input class="claseButton" type="password" id="contraseña"   placeholder="contraseña " name="contraseña" required><br> 
-				<% if (locals.errors && errors.password)  {   %>
-					<div class="error-msg"> <%= errors.password.msg  %>  </div> 
-                            <% }  %>    
+				<% if (locals.errors && errors.contraseña)  {   %>	
+				<div class="error-msg"> <%= errors.contraseña.msg  %>  </div> 
+                <% }  %>    
                  
 				<!-- Campo para recordar -->
 				<input class="label" type="checkbox" id="recordarme" name="recordarme">
