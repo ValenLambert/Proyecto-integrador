@@ -18,21 +18,18 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12 COLOR"> 
-				<form action="/users" method="GET">
+				<form action="/users" method="POST">
 					<label for="email">Email:</label><br>
-					<input type="email" id="email" name="email" required><br>
-			
-					<label for="usuario">Usuario:</label><br>
-					<input type="text" id="usuario" name="usuario" required><br>
+					<input type="email" id="email" name="email" value="<%= User.email %>" required><br>
 			
 					<label for="contraseña">Contraseña:</label><br>
-					<input type="password" id="contraseña" name="contraseña" required><br>
-			
+					<input type="password" id="contraseña" name="contraseña" value="Nueva contraseña" required><br>
+
 					<label for="fecha_nacimiento">Fecha de nacimiento:</label><br>
-					<input type="date" id="fecha" name="fecha" required><br>
+					<input type="date" id="fecha" name="fecha" value="<%= User.fecha %>" required><br>
 			
 					<label for="DNI">Nro de documento:</label><br>
-					<input type="number" id="DNI" name="DNI" required><br>
+					<input type="number" id="DNI" name="DNI" value="<%= User.DNI %>" required><br>
 			
 					<label for="foto">Foto de perfil:</label><br>
 					<input type="text" id="foto" name="foto"><br>

@@ -17,9 +17,11 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title USUARIO "> <%= User.email %>
-						<a href="/users/edit">
-							<i class="fas fa-cog"></i>
-						</a>
+						<% if (locals.user != undefined) { %>
+							<a href="/users/edit/<%= User.id_usuario%>">
+								<i class="fas fa-cog">Editar perfil</i>
+							</a>
+						<% } %>	
 					</h1>
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
 					

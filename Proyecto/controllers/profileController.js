@@ -79,6 +79,40 @@ let profileController = {
                 console.log("Error al guardar el usuario", err);
             });
     }},
+    edit: function (req,res) {
+    if (req.session.user.id_usuario === id) {
+        const id = req.params.id;
+        db.User.findByPk(id)
+        .then(function (edit) {
+            res.render("profileEdit", {User: edit})
+        })
+        .catch(function (err) {
+            console.log(err)
+        })}
+    },
+    changes: function (req, res) {
+        const resultValidation =  validationResult(req)
+        // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body
+        if (!resultValidation.isEmpty()){
+           console.log("errores: ", JSON.stringify(resultValidation,null,4));
+           return res.render ("register", {
+               errors: resultValidation.mapped(),
+               oldData:req.body})
+       } else {
+            const id = req.params.id;
+            const usuario = req.body;
+            db.User.update(usuario, {
+                where: {
+                    id_usuario: id
+                }
+            })
+                .then(function (result) {
+                    return res.redirect(`/users/perfil/${id}`)
+                })
+                .catch(function (err) {
+                    console.log(err)
+                })
+     }},
     logout: function(req,res){
         req.session.destroy();
 
