@@ -22,7 +22,7 @@
 				
 				<label class="label" for="usuario"> Usuario (email):</label> <br> 
 	 <!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
-				<input class="claseButton" type="email" id="email " name="email " placeholder="email "  value="<%= locals.oldData && oldData.email ? oldData.email : "" %>"> 
+				<input class="claseButton" type="email" id="email" name="email" placeholder="email"  value="<%= locals.oldData && oldData.email  ? oldData.email  : "" %>"> 
 			<% if (locals.errors && errors.email) { %>
 			<div class = "error-msg"> <%= locals.errors.email.msg %> </div>
 			<% } %> 

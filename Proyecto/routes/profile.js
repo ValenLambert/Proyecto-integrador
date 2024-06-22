@@ -6,7 +6,7 @@ const registerValidation = require ("../middlewares/register-validator");
 const loginValidations = require('../middlewares/login-validator')
 
 //router.get ("/edit", profileController.edit);
-router.get("/", profileController.perfil);
+router.get("/:id", profileController.perfil);
 router.get('/register', profileController.index);
 router.post('/register', registerValidation, profileController.store); 
 router.get("/login", profileController.loggueado);

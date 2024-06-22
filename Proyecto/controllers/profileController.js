@@ -23,22 +23,23 @@ let profileController = {
         if (!resultValidation.isEmpty()){
             return res.render ("login", {
                 errors: resultValidation.mapped(),
-                oldData:req.body})
+                oldData:req.body,},
+                console.log(resultValidation.mapped()))
         } else  {
             // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body         
             // Buscamos el usuario que se quiere loguear.
             db.User.findOne({
                 where: [{email: req.body.email}]
             })
-            .then( function ( user ) {
+            .then( function (user) {
                 //Seteamos la session con la info del usuario
                 req.session.user = user;          
                 //Si tildó recordame => creamos la cookie.
                 if(req.body.recordarme != undefined){
                     res.cookie('userId', user.id, { maxAge: 1000 * 60 * 100})
                 }
-                return res.redirect('/');            
-            })
+                    return res.redirect(`/users/${user.id_usuario}`);            
+                })
             .catch( function(error) {
                 console.log(error)
             }) 
