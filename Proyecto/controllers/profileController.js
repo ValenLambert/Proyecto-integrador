@@ -38,7 +38,7 @@ let profileController = {
                 if(req.body.recordarme != undefined){
                     res.cookie('userId', user.id, { maxAge: 1000 * 60 * 100})
                 }
-                    return res.redirect(`/users/${user.id_usuario}`);            
+                    return res.redirect(`/users/perfil/${user.id_usuario}`);            
                 })
             .catch( function(error) {
                 console.log(error)

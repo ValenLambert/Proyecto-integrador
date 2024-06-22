@@ -12,7 +12,7 @@ var usersRouter = require('./routes/profile');
 var headerLogueadoRouter = require ("./routes/headerLogueado");
 var productRouter = require ("./routes/product");
 const { log } = require('console');
-
+const db = require('./database/models');
 
 
 var app = express();
@@ -60,13 +60,14 @@ app.use(function(req,res,next){
     // buscamos un usuario en la abse de datos con el id de la cookie, por primary key
     db.User.findByPk(idDeLaCookie)
     .then(function(user){
-      console.log("middleare de la cookie trasladando  la informacion ")
+      console.log("middleare de la cookie trasladando la informacion ")
       req.session.user = user
       console.log("en la cookie middleware");
-      // quiero teenr la session tambien disponible en las vistas:
+      // quiero tener la session tambien disponible en las vistas:
       res.locals.user = user; 
-      return next; 
+      return next();
     })
+    
     .catch (function(err){
       console.log("error en cookies", err);
     })
