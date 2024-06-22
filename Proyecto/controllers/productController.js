@@ -12,7 +12,9 @@ const productController= {
                  {
                 include: [
                   { association: 'user' },
-                   { association: 'comments' }
+                   { association: 'comments',
+                   include: { association: 'user' },
+                   order: [['createdAt', 'DESC']] }
               ]
             })
             .then(data => {
@@ -88,15 +90,34 @@ const productController= {
             .then( function (producto) {
            
         //4)Redirección
-                return res.redirect(`/detail/${producto.id_producto}`); // no seria al detalle del producto con el id de ese producto? 
+                return res.redirect(`/product/detail/${id_delProducto}`); // no seria al detalle del producto con el id de ese producto? 
             })
             .catch(error => {
                 console.log(error);
             })
     },
-
-
-
+    newComment: function (req, res) {
+        const resultValidation = validationResult(req) 
+        if (!resultValidation.isEmpty()){
+            return res.render( "product", 
+            {errors: resultValidation.mapped(),
+                oldData: req.body
+            })
+        } else {
+        let data = req.body;
+        let comentario = {
+            descripcion: data.comentario,
+            id_delProducto: id_delProducto,
+            id_delUsuario: id_delUsuario
+        }
+        db.Comments.create(comentario)
+        .then( function (comentario) {
+                return res.redirect(`/product/detail/${id_delProducto}`);
+                })
+        .catch(error => {
+            console.log(error);
+        })}
+    }
 
 }
 

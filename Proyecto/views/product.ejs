@@ -1,10 +1,10 @@
 <%- include('./partials/head') %>
 <body>
-	<!-- Header -->
+<!-- Header -->
 <% if (locals.user != undefined) { %>
-    <%- include('headerLogueado') %>
+    <%- include('./partials/headerLogueado') %>
 <% } else { %>
-    <%- include('header') %>
+    <%- include('./partials/header') %>
 <% } %>
 <!-- /Header -->
 
@@ -28,18 +28,19 @@
 						</p>
 						<p class="product-detail-description DESCRIPCION">
 								Cargado por: <br>
-								<%= Products.user.email %>
+								<a href="/users/<%= Products.user.id_usuario %>">
+									<%= Products.user.email %>
+								</a>
 							</p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<p class="product-detail-description DESCRIPCION">
-							Comentarios:
-						</p>
-						<% if (Products.comments && Products.comments.length > 0) { %>
+						<% if (Products.comments.length> 0) { %>
+							<p class="product-detail-description DESCRIPCION">
+								Comentarios:
+							</p>
 							<% for (let i = 0; i < Products.comments.length; i++) { %>
 								<article>
-									<% if (Products.comments[i].user) { %>
 										<img src="<%= Products.comments[i].user.foto %>" alt="Foto de perfil">
 										<div class="data">
 											<p class="user">
@@ -51,9 +52,6 @@
 												<%= Products.comments[i].comentario %>
 											</p>
 										</div>
-									<% } else { %>
-										<p>No se encontró usuario para este comentario.</p>
-									<% } %>
 								</article>
 							<% } %>
 						<% } else { %>
@@ -62,11 +60,17 @@
 					</section>
 					
 					
-
-					<form action="/product" method="GET"> 
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button ">AGREGAR COMENTARIO</button>
-					</form>
+					<% if (locals.user != undefined) { %>
+						<form action="/product/detail/<%= Products.id_producto %>" method="POST"> 
+							<input class="form-input" type="text" value="" name="comentario" placeholder="<%= locals.oldData && oldData.comentario ? oldData.comentario : 'Haz tu comentario' %>">
+							<button type="submit" class="buy-now-button ">AGREGAR COMENTARIO</button>
+						</form>
+					<% } else { %>
+						<form action="/product/detail/<%= Products.id_producto %>" method="GET"> 
+							<input class="form-input" type="text" value="" placeholder="¡Debes estar loggeado para comentar!">
+						</form>
+					<% } %>
+				
 					<hr>
 				</div>
 			</div>

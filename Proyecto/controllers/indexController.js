@@ -7,6 +7,10 @@ const indexController= {
             db.Products.findAll({
                 order: [
                     ["createdAt", "DESC"]
+                ],
+                include: [
+                    { association: 'user' },
+                     { association: 'comments' }
                 ]
             })
             .then (function (data){
@@ -21,9 +25,20 @@ const indexController= {
         buscar: function(req, res, next) {
             let info = req.query.search; //obtengo la info de la querystring.
             db.Products.findAll({
-                where: [
-                    { nombre: {[op.like]: '%'+info+'%'}}
-                ]})
+                where:{
+                    [op.or]: [
+                        { nombre: { [op.like]: '%' + info + '%' } },
+                        { descripcion: { [op.like]: '%' + info + '%' } }
+                    ]
+                },
+                order: [
+                    ["createdAt", "DESC"]
+                ],
+                include: [
+                    { association: 'user' },
+                     { association: 'comments'}
+                ]
+            })
                 .then(function(data){
                     return res.render('searchResults',{Products: data, info: info});
                 })
