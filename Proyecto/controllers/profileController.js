@@ -50,6 +50,13 @@ let profileController = {
             return res.render('login');
         }},
 
+        loggueado: function (req, res) {
+            if (req.session.user !== undefined) {
+            return res.redirect('/');
+        } else {
+            return res.render('login');
+        }},
+
     index: function (req, res) {
         if (req.session.user !== undefined) {
             return res.redirect('/');

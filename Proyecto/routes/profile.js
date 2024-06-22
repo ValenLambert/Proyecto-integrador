@@ -8,7 +8,7 @@ const loginValidations = require('../middlewares/login-validator')
 //router.get ("/", profileController.index);
 //router.get ("/edit", profileController.edit);
 router.get('/register', profileController.index);
-router.get("/login", profileController.login);
+router.get("/login", profileController.loggueado);
 
 // incluimos el middleware de validaciones entre el path y el controlador
 router.post('/register', registerValidation, profileController.store); 
