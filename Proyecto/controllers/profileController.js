@@ -80,15 +80,15 @@ let profileController = {
             });
     }},
     edit: function (req,res) {
-    if (req.session.user.id_usuario === id) {
         const id = req.params.id;
-        db.User.findByPk(id)
-        .then(function (edit) {
-            res.render("profileEdit", {User: edit})
-        })
-        .catch(function (err) {
-            console.log(err)
-        })}
+        if (req.session.user.id_usuario === id) {
+            db.User.findByPk(id)
+            .then(function (edit) {
+                res.render("profileEdit", {User: edit})
+            })
+            .catch(function (err) {
+                console.log(err)
+            })}
     },
     changes: function (req, res) {
         const resultValidation =  validationResult(req)
@@ -100,7 +100,12 @@ let profileController = {
                oldData:req.body})
        } else {
             const id = req.params.id;
-            const usuario = req.body;
+            const { contraseña, ...usuario } = req.body; 
+
+            if (contraseña && contraseña !== undefined ) {
+                usuario.contraseña = contraseña;
+            }
+
             db.User.update(usuario, {
                 where: {
                     id_usuario: id

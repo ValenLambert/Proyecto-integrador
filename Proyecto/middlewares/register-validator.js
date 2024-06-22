@@ -20,6 +20,9 @@ const registerValidation = [
     ,body ("contraseña")
         .notEmpty().withMessage("Ingrese una contraseña")
         .isLength({ min: 4 }).withMessage('La contraseña debe tener al menos 4 caracteres')
+    ,body ("contra")
+        .optional() 
+        .isLength({ min: 4 }).withMessage('La contraseña debe tener al menos 4 caracteres')
 ]
 
 module.exports =registerValidation;
