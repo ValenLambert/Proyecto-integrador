@@ -207,34 +207,36 @@ const productController = {
             })
         }
     },
-    delete: function (req, res ) {
-    let id = req.params.id
-    db.Products.findByPk(id)
-    .then(function (product) {
-        let idusuario = product.id_delUsuario
-        // console.log ( "ACACACACCACACACACACACACCACACA",req.session.user)
-
-        if (req.session.user.id_usuario == idusuario) {
-            db.Product.destroy ({
-                where: [
-                    { id: id }
-                ]
+    destroy: function (req, res) {
+        let id = req.params.id;
+    
+        // Buscar el producto por su ID
+        db.Products.findByPk(id)
+            .then(function (product) {
+                let idusuario = product.id_delUsuario;
+                console.log("A VERRRRRRRR", idusuario)
+                console.log( "ERRORRRRREEEETEEE", req.session.user );
+                
+                 if (req.session.user.id_usuario = idusuario) {
+                     return db.Products.destroy({
+                            where: [
+                                { id_producto: id }
+                            ]
+                        })
+                            .then(() => {
+                                return res.redirect('/');
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            })
+                } else {
+                     return res.redirect(`/products/detail/${id}`);
+                }
             })
-                .then( function(data) {
-                    return res.redirect('/');
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        } else {
-            return res.redirect(`/products/detail/${id}`);
-        }
-    })
-    .catch(error => {
-        console.log(error);
-    })
-    },
-
+            .catch(function (error) {
+                 console.log(error);
+            });
+    }, 
 };
 
 module.exports = productController;

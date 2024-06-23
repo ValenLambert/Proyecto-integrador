@@ -20,33 +20,13 @@ let profileController = {
                 { association: 'comments' }
             ]
         })
-        .then(function(user) {
-            // Encontrar todos los productos del usuario
-            return db.Products.findAll({
-                where: { id_delUsuario: id },
-                include: [
-                    { association: 'user' },
-                    {
-                        association: 'comments',
-                        include: { association: 'user' },
-                        order: [['createdAt', 'DESC']]
-                    }
-                ]
-            })
-            .then(function(products) {
-                console.log("PRODUCTOS!!!!!!!!", products);
-                let totalProductos = user.products.length;
-                // Pasar a la vista el usuario, el total de los productos que cargó y la lista con esos productos
-                return res.render('profile', {
-                    User: user,
-                    totalProductos: totalProductos,
-                    product: products // Corregido el nombre de la variable para evitar confusiones
-                });
-            });
+
+        .then(function (user) {
+            console.log("IMPRIMIR!!!!", user.email);
+            res.render("profile", {User: user})
         })
         .catch(function(error) {
             console.log(error);
-            res.status(500).send('Error al cargar el perfil');
         });
     },
     

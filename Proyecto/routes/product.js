@@ -15,6 +15,8 @@ router.get('/edit/:id', productController.edit);
 
 router.post('/edit/:id', productValidations, productController.change);
 
-router.post("/delete/:id", productController.delete);
+router.post ('/delete/:id', productController.destroy); 
+
+
 
 module.exports = router;
