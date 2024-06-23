@@ -173,9 +173,11 @@ const productController = {
         db.Products.findByPk(id)
         .then(function (product) {
             let idusuario = product.id_delUsuario
+            console.log ( "ACACACACCACACACACACACACCACACA",req.session.user)
+
             if (req.session.user.id_usuario == idusuario) {
-                console.log (req.session.user)
-                return res.render("productEdit", {Products:product});
+                console.log ( "ACACACACCACACACACACACACCACACA",req.session.user)
+                return res.render("productEdit", {Products:product, User: req.session.user });
             } else {
                 return res.redirect(`/products/${id}`);
             }
@@ -187,10 +189,51 @@ const productController = {
     change: function (req,res) {
         const resultValidation = validationResult(req);
         if (!resultValidation.isEmpty()) {
-            return res.render("productEdit", {errors: resultValidation.mapped(), oldData: req.body})
+            return res.render("productEdit", {errors: resultValidation.mapped(), oldData: req.body, User: req.session.user })
         }
-        else{ }
-    }
+        else {
+        const id = req.params.id;
+        const product = req.body;
+        db.Products.update (product, {
+            where: {
+                id: id
+            }
+        })
+            .then(function (result) {
+                return res.redirect(`/product/detail/${id}`)
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
+        }
+    },
+    delete: function (req, res ) {
+    let id = req.params.id
+    db.Products.findByPk(id)
+    .then(function (product) {
+        let idusuario = product.id_delUsuario
+        // console.log ( "ACACACACCACACACACACACACCACACA",req.session.user)
+
+        if (req.session.user.id_usuario == idusuario) {
+            db.Product.destroy ({
+                where: [
+                    { id: id }
+                ]
+            })
+                .then( function(data) {
+                    return res.redirect('/');
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        } else {
+            return res.redirect(`/products/detail/${id}`);
+        }
+    })
+    .catch(error => {
+        console.log(error);
+    })
+    },
 
 };
 

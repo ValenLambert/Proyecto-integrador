@@ -14,10 +14,19 @@
 		<div class="d-flex align-items-center">
 			<h2 class="products-title" id="editar" > <%=Products.nombre%></h2> 
 			<% if (locals.user != undefined ) { %>
-				<p class="product-detail-description TITULOS" id="editar"> 
+				<p class="product-detail-description TITULOS buy-now-button" id="editar" > 
 					<a href="/product/edit/<%= Products.id_producto %>"> Editar</a> 
 				</p>
 			<% } %> 
+			<% if (locals.user != undefined ) { %>
+				<p class="product-detail-description TITULOS buy-now-button" style="color: red;" id="editar" > 
+					<form action="/product/delete/<%= Products.id_producto %>" method="POST"> 
+						<button type="submit" class="buy-now-button "  >Borrar producto </button>
+					</form>
+			
+				</p>
+			<% } %> 
+
 
 		</div>
 		<div class="product-detail">
