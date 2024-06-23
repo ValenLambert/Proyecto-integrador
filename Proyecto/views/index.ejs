@@ -19,18 +19,13 @@
     <div class="container products-wrapper">
         <div class="row">
             <div class="col-12">
-                <% if (locals.user) { %>
-                    <h2 class="text-center mb-3"> Hola, bienvenido/a!  <%= locals.user.name %></h2>
+                <% if (User) { %>
+                    <h2 class="products-title TITULOS"> ¡Hola, bienvenido/a  <%=User.email%>!</h2>
                 <% } %>
                 <h2 class="products-title TITULOS">Novedades</h2>
             </div>
              <!-- si esta logueado, mostrar boton de logout (todavia no igual ...)  -->
-             <% if (locals.user) { %> 
-                <form action="/login/logout" method="post" class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-danger">Logout</button>
-                </form>
-                <!-- sino esta logueado, mostrar register y login -->
-            <% } %>
+           
 
             <!-- Show the "ultimos" products -->
             <!-- FOR-->

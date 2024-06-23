@@ -18,9 +18,9 @@
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title USUARIO "> <%= User.email %>
 						<% if (locals.user != undefined) { %>
-							<a href="/users/perfil/<%= User.id_usuario%>">
-
-								<i class="fas fa-cog">Editar perfil</i>
+							<a href="/users/edit/<%= User.id_usuario%>">
+								<i class="fas fa-cog"></i>
+								Editar perfil
 							</a>
 						<% } %>	
 					</h1>

@@ -40,7 +40,8 @@ let profileController = {
             });
     },
     loggueado: function (req, res) {
-        if (req.session.user !== undefined) {
+        if (req.session.user != undefined) {
+            console.log (req.session.user)
             return res.redirect('/');
         } else {
             return res.render('login');
@@ -76,7 +77,7 @@ let profileController = {
     },
 
     index: function (req, res) {
-        if (req.session.user !== undefined) {
+        if (req.session.user != undefined ) {
             return res.redirect('/');
         } else {
             return res.render('register');
@@ -110,14 +111,16 @@ let profileController = {
     }},
     edit: function (req,res) {
         const id = req.params.id;
-        if (req.session.user.id_usuario === id) {
+        if (req.session.user.id_usuario == id) {
             db.User.findByPk(id)
             .then(function (edit) {
                 res.render("profileEdit", {User: edit})
             })
             .catch(function (err) {
                 console.log(err)
-            })}
+            })} else {
+                res.redirect (`/users/perfil/${id}`)
+            }
     },
     changes: function (req, res) {
         if (req.body.contraseña !== undefined) {

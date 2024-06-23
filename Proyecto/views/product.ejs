@@ -12,7 +12,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title" id="editar" > <%= Products.nombre %></h2> 
+			<h2 class="products-title" id="editar" > <%=Products.nombre%></h2> 
 			<p class="product-detail-description TITULOS" id="editar"> 
 				<a href="/product/add"> Editar</a> 
 			</p>
@@ -61,10 +61,15 @@
 					
 					
 					<% if (locals.user != undefined) { %>
+						
 						<form action="/product/detail/<%= Products.id_producto %>" method="POST"> 
 							<input class="form-input" type="text" value="" name="comentario" placeholder="<%= locals.oldData && oldData.comentario ? oldData.comentario : 'Haz tu comentario' %>">
+							<% if (locals.errors && errors.comentario) { %>
+								<div class="products-title" style="color: red;" ><%= errors.comentario.msg %></div>
+							<% } %> 
 							<button type="submit" class="buy-now-button ">AGREGAR COMENTARIO</button>
 						</form>
+						
 					<% } else { %>
 						<form action="/product/detail/<%= Products.id_producto %>" method="GET"> 
 							<input class="form-input" type="text" value="" placeholder="¡Debes estar loggeado para comentar!">
