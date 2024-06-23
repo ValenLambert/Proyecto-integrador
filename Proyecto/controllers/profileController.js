@@ -8,25 +8,22 @@ const bcrypt = require('bcryptjs');
 
 let profileController = {
     perfil:  function (req, res) {
-            let id = req.params.id;
-            let products = null 
-            let user = null
-        // buscamos al ussuairo por su id y inclju9mos las asocaciones q ya definimos en el modelso
-            db.User.findByPk(id, {
-                include: [
-                    {
-                        association: 'products',
-                        order: [['createdAt', 'DESC']] // Ordenar productos cronológicamente
-                    },
-                    { association: 'comments' }
-                ]
-            })
-            .then(function (data) {
-                 user = data
-                return db.Products.findAll({where:[
-                    {id_delUsuario: id }
-                    
-                ],
+        let id = req.params.id;
+    
+        // Buscamos al usuario por su id e incluimos las asociaciones definidas en el modelo
+        db.User.findByPk(id, {
+            include: [
+                {
+                    association: 'products',
+                    order: [['createdAt', 'DESC']] // Ordenar productos cronológicamente
+                },
+                { association: 'comments' }
+            ]
+        })
+        .then(function(user) {
+            // Encontrar todos los productos del usuario
+            return db.Products.findAll({
+                where: { id_delUsuario: id },
                 include: [
                     { association: 'user' },
                     {
@@ -36,25 +33,23 @@ let profileController = {
                     }
                 ]
             })
-            })
-            .then(function(product) {
-                console.log("PRODUCTOS!!!!!!!!", product);
+            .then(function(products) {
+                console.log("PRODUCTOS!!!!!!!!", products);
                 let totalProductos = user.products.length;
-                // pasampos a la vista el usuaario, el total de los productos que cargo y la lista con esos productos
-                // console.log("errores", totalProductos);
-                // console.log("ERRORES", user.products);
+                // Pasar a la vista el usuario, el total de los productos que cargó y la lista con esos productos
                 return res.render('profile', {
                     User: user,
                     totalProductos: totalProductos,
-                    product: product
-                })
-
-                
-            })
-            .catch(function(error) {
-                console.log(error);
+                    product: products // Corregido el nombre de la variable para evitar confusiones
+                });
             });
+        })
+        .catch(function(error) {
+            console.log(error);
+            res.status(500).send('Error al cargar el perfil');
+        });
     },
+    
     loggueado: function (req, res) {
         if (req.session.user != undefined) {
             console.log (req.session.user)
