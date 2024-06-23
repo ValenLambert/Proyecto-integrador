@@ -167,7 +167,31 @@ const productController = {
                     console.log(error);
                 });
         }
+    },
+    edit: function (req, res) {
+        let id = req.params.id
+        db.Products.findByPk(id)
+        .then(function (product) {
+            let idusuario = product.id_delUsuario
+            if (req.session.user.id_usuario == idusuario) {
+                console.log (req.session.user)
+                return res.render("productEdit", {Products:product});
+            } else {
+                return res.redirect(`/products/${id}`);
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+        },
+    change: function (req,res) {
+        const resultValidation = validationResult(req);
+        if (!resultValidation.isEmpty()) {
+            return res.render("productEdit", {errors: resultValidation.mapped(), oldData: req.body})
+        }
+        else{ }
     }
+
 };
 
 module.exports = productController;

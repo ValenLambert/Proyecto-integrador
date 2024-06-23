@@ -11,4 +11,8 @@ router.post ("/add", productValidations, productController.store)
 
 router.post("/detail/:id",commentValidations, productController.newComment)
 
+router.get('/edit/:id', productController.edit);
+
+router.post('/edit/:id', productValidations, productController.change);
+
 module.exports = router;
