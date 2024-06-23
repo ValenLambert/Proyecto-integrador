@@ -9,6 +9,8 @@ const bcrypt = require('bcryptjs');
 let profileController = {
     perfil:  function (req, res) {
             let id = req.params.id;
+            let products = null 
+            let user = null
         // buscamos al ussuairo por su id y inclju9mos las asocaciones q ya definimos en el modelso
             db.User.findByPk(id, {
                 include: [
@@ -19,24 +21,38 @@ let profileController = {
                     { association: 'comments' }
                 ]
             })
-            .then(function(user) {
-                // if (!user) {
-                //     return res.status(404).render('notFound'); // o redirigir a una página de no encontrado
-                // }
-
-                // calculamos el numero de productos cargado por el usairo 
+            .then(function (data) {
+                 user = data
+                return db.Products.findAll({where:[
+                    {id_delUsuario: id }
+                    
+                ],
+                include: [
+                    { association: 'user' },
+                    {
+                        association: 'comments',
+                        include: { association: 'user' },
+                        order: [['createdAt', 'DESC']]
+                    }
+                ]
+            })
+            })
+            .then(function(product) {
+                console.log("PRODUCTOS!!!!!!!!", product);
                 let totalProductos = user.products.length;
                 // pasampos a la vista el usuaario, el total de los productos que cargo y la lista con esos productos
-                console.log("errores", totalProductos);
+                // console.log("errores", totalProductos);
+                // console.log("ERRORES", user.products);
                 return res.render('profile', {
                     User: user,
                     totalProductos: totalProductos,
-                    productos: user.products
-                });
+                    product: product
+                })
+
+                
             })
             .catch(function(error) {
                 console.log(error);
-                
             });
     },
     loggueado: function (req, res) {
@@ -146,7 +162,6 @@ let profileController = {
                     console.log(err)
                 })
      }} else {
-        //poner para que se guarde todo emnos la contraseñaaaaa nose como AYUDA NINAAAA
      }
     },
     logout: function(req,res){

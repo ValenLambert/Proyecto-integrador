@@ -30,7 +30,7 @@
 				<div>
 					<ul class="infoUsuario">
 						<li><%= User.email %></li>
-						<li> productos cargados: <%= User.products.lenght  %></li>
+						<li> productos cargados: <%= totalProductos  %></li>
 						<!-- esto chequear si es necesario:  -->
 					    <!-- <li> seguidores: 200</li>
 						<li> comentarios: 3</li> -->
@@ -45,20 +45,20 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Mis productos</h2>
+				<h2 class="products-title">Mis productos: </h2>
 			</div>
 			<!-- Show mis productos -->
-			<% for( let i = 0; User.products.lenght ; i++ ) { %>
+			<% for( let i = 0; product.lenght ; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/detail/<%= product.id_producto %>">
+						<a href="/product/detail/<%= product[i].id_producto %>">
 							<figure class="product-box_image">
-								<img src="images/products/raqueta.jpg" alt="cafetera moulinex">
+								<img src="<%= product[i].foto_producto  %>" alt="cafetera moulinex">
 							</figure>
 							<article class="product-box_data ">
-								<h2 class="PRODUCTOS"><%= product.nombre %></h2>
-								<p class="DESCRIPCION"><%= product.descripcion %></p>
-								<p class="DESCRIPCION">  Comentarios: <%= comentarios.lenght %></p>
+								<h2 class="PRODUCTOS"><%= product[i].nombre %></h2>
+								<p class="DESCRIPCION"><%= product[i].descripcion %></p>
+								<p class="DESCRIPCION">  Comentarios: <%= product.comentarios[i].lenght %></p>
 							</article>
 						</a>
 					</section>
