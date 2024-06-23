@@ -7,9 +7,38 @@ const bcrypt = require('bcryptjs');
 
 
 let profileController = {
-    perfil: function (req,res)
-         {res.send ("profile")},
-        
+    perfil:  function (req, res) {
+            let id = req.params.id;
+        // buscamos al ussuairo por su id y inclju9mos las asocaciones q ya definimos en el modelso
+            db.User.findByPk(id, {
+                include: [
+                    {
+                        association: 'products',
+                        order: [['createdAt', 'DESC']] // Ordenar productos cronológicamente
+                    },
+                    { association: 'comments' }
+                ]
+            })
+            .then(function(user) {
+                // if (!user) {
+                //     return res.status(404).render('notFound'); // o redirigir a una página de no encontrado
+                // }
+
+                // calculamos el numero de productos cargado por el usairo 
+                let totalProductos = user.products.length;
+                // pasampos a la vista el usuaario, el total de los productos que cargo y la lista con esos productos
+                console.log("errores", totalProductos);
+                return res.render('profile', {
+                    User: user,
+                    totalProductos: totalProductos,
+                    productos: user.products
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
+                
+            });
+    },
     loggueado: function (req, res) {
         if (req.session.user !== undefined) {
             return res.redirect('/');
@@ -123,8 +152,7 @@ let profileController = {
         res.clearCookie('userId');
         
         return res.redirect('/')
-    }
-
+    },
 
 };
 

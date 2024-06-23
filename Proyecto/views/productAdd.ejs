@@ -17,11 +17,11 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12 PRODUCTOS alignForms"> 
-				<form action="/product/store" method="post">
+				<form action="/product/add" method="post">
 
 					<label class="label" for="imagen">Imagen:</label>
 	 <!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
-					<input class="claseButton" type="file" name="imagen" accept="image/*" placeholder="url de la imagen" required value="<%= locals.oldData && oldData.imagen ? oldData.imagen : null %>"><br><br><br>
+					<input class="claseButton" type="text" name="imagen" accept="image/*" placeholder="url de la imagen"  value="<%= locals.oldData && oldData.imagen ? oldData.imagen : null %>"><br><br><br>
 	<!-- aqui preguntamos si hay errores en locals, y si el error coincide con el name del input. si hay enviamos el error en un div con class="error-msg" -->
 				<% if (locals.errors && errors.imagen  )  { %>
 					<div class=""> <%= errors.imagen.msg  %> </div> 
@@ -30,7 +30,7 @@
 					<label class="label" for="nombre">Nombre del Producto:</label>
 	<!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
 
-					<input class="claseButton"  type="text" id="nombre" name="nombre" placeholder="nombre del producto" required value=" <%= locals.oldData && oldData.nombre ? oldData.nombre : null  %>"><br><br><br>
+					<input class="claseButton"  type="text" id="nombre" name="nombre" placeholder="nombre"  value=" <%= locals.oldData && oldData.nombre ? oldData.nombre : null  %>"><br><br><br>
 	<!-- preguntamos si hay errores en loclas y si los hay los enviamos  -->
 					<% if (locals.errors && errors.nombre )  { %> 
 						<div> <%= errors.nombre.msg  %>  </div>
@@ -38,11 +38,14 @@
 
 					<label class="label" for="descripcion">Descripción:</label><br>
 	<!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
-					<input class="claseButton"  type="text" name="descripcion" placeholder="escriba una descripcion " required value=" <%= locals.oldData && oldData.descripcion ? oldData.descripcion : null %>"  ><br><br> 
+					<input class="claseButton"  type="text" name="descripcion" placeholder="escriba una descripcion "  value=" <%= locals.oldData && oldData.descripcion ? oldData.descripcion : null %>"  ><br><br> 
 	<!-- preguntamos si hay errores en loclas y si los hay los enviamos  -->
 						<% if(locals.erros && errors.descripcion)  { %> 
 							<div> <%= errors.descripcion.msg  %></div>
 							<% } %>
+			<label class="label" > fecha  </label> 
+			<!-- chequear si asi se agrega la fecha de creacion del producto -->
+			<input  class="claseButton" type="date" name="createdAt" placeholder="fecha de carga"><br><br>
 					<button class="claseButton" id="agregarProducto" type="submit">Agregar Producto</button>
 			</h2>
 		</div>

@@ -45,7 +45,9 @@ const productController= {
             //Mostrar formulario de carga de crear, quiere decir que si estas logueado
             db.Products.findAll()
                 .then( data => {
-                    return res.render('productAdd', {Products:data});
+                    return res.render('productAdd', {
+                        User: req.session.user,  // Pasar el usuario logueado a la vista
+                        Products: data});
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -73,7 +75,7 @@ const productController= {
             //Método para guardar nuev producto .
 
             let id_delUsuario = req.session.user.id_delUsuario;
-         console.log(id_delUsuario)
+         console.log("iddelusuario", id_delUsuario)
 
         //1) Obtener datos del formulario
         let data = req.body;
@@ -90,7 +92,9 @@ const productController= {
             .then( function (producto) {
            
         //4)Redirección
-                return res.redirect(`/product/detail/${id_delProducto}`); // no seria al detalle del producto con el id de ese producto? 
+                return res.redirect(`/product/detail/${id_delProducto}`, {
+                    User: req.session.user,  // Pasar el usuario logueado a la vista
+                    Products: producto});  // chequear!!!!
             })
             .catch(error => {
                 console.log(error);
