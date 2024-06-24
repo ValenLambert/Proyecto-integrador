@@ -193,10 +193,16 @@ const productController = {
         }
         else {
             const id = req.params.id;
-            const product = req.body;
-            db.Products.update(product, {
+            const foto_producto = req.body.imagen;
+            const nombre= req.body.nombre;
+            const descripcion= req.body.descripcion;
+            db.Products.update({
+                foto_producto:foto_producto,
+                nombre: nombre,
+                descripcion:descripcion
+            }, {
                 where: {
-                    id: id
+                    id_producto: id
                 }
             })
                 .then(function (result) {

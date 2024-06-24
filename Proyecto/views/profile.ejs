@@ -30,10 +30,10 @@
 				<div>
 					<ul class="infoUsuario">
 						<li><%= usuario.email %></li>
-						<li> productos cargados: <%= usuario.products.lenght %></li>
+						<li> Productos cargados: <%= usuario.products.length %></li>
 						<!-- esto chequear si es necesario:  -->
-					    <!-- <li> seguidores: 200</li>
-						<li> comentarios: 3</li> -->
+					    <li> Seguidores: 200</li>
+						<li> Comentarios: 3</li> 
 					</ul>
 				</div>
 			</div>
@@ -44,9 +44,16 @@
 	<!-- Mis productos -->
 	<div class="container products-wrapper">
 		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title" id="misProductos" >    Mis productos: </h2>
-			</div>
+			<% if (locals.user != undefined && locals.user.id_usuario === usuario.id_usuario) { %>
+				<div class="col-12">
+					<h2 class="products-title" id="misProductos" >    Mis productos: </h2>
+				</div>
+				<% } else { %>
+					<div class="col-12">
+						<h2 class="products-title" id="misProductos">Productos publicados:</h2>
+					</div>
+				<% } %>
+			
 			<!-- Show mis productos -->
 			<% for( let i = 0; i< usuario.products.length ; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
@@ -58,7 +65,7 @@
 							<article class="product-box_data ">
 								<h2 class="PRODUCTOS"><%= usuario.products[i].nombre %></h2>
 								<p class="DESCRIPCION"><%= usuario.products[i].descripcion %></p>
-								<p class="DESCRIPCION">  Comentarios: <%= usuario.comments.lenght %></p>
+								<p class="DESCRIPCION">  Comentarios: <%= usuario.comments.length %></p>
 							</article>
 						</a>
 					</section>
