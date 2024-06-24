@@ -18,10 +18,10 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12 COLOR"> 
-				<form action="/users" method="POST">
+				<form action="/users/edit/<%= User.id_usuario %>" method="POST">
 			
 					<label for="contraseña">Contraseña:</label><br>
-					<input type="password" id="contraseña" name="contraseña" value="Nueva contraseña" ><br>
+					<input type="password" id="contraseña" name="contraseña" value="" ><br>
 
 					<label for="fecha_nacimiento">Fecha de nacimiento:</label><br>
 					<input type="date" id="fecha" name="fecha" value="<%= User.fecha %>" ><br>

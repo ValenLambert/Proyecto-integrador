@@ -66,7 +66,7 @@ const indexController= {
                 ]
             })
                 .then(function(data){
-                    return res.render('searchResults',{Products: data, info: info});
+                    return res.render('searchResults',{Products: data, info: info, User:req.session.user});
                 })
                 .catch(function(error){
                     console.log(error);

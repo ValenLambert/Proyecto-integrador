@@ -22,8 +22,8 @@ let profileController = {
         })
 
         .then(function (user) {
-            console.log("IMPRIMIR!!!!", user.email);
-            res.render("profile", {User: user})
+            console.log("IMPRIMIR!!!!",  user.products);
+            res.render("profile", {User: req.session.user, usuario:user})
         })
         .catch(function(error) {
             console.log(error);
@@ -114,18 +114,21 @@ let profileController = {
             }
     },
     changes: function (req, res) {
-        if (req.body.contraseña !== undefined) {
+        if (req.body.contraseña != undefined) {
             const resultValidation =  validationResult(req)
             // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body
             if (!resultValidation.isEmpty()){
             console.log("errores: ", JSON.stringify(resultValidation,null,4));
-            return res.render ("register", {
+            return res.render ("profileEdit", {
                 errors: resultValidation.mapped(),
-                oldData:req.body})
+                oldData:req.body,
+                User:req.session.user
+            })
             } else {
                 const id = req.params.id;
                 const usuario = req.body; 
-                db.User.update(usuario, {
+                db.User.update(usuario,
+                    {
                     where: {
                         id_usuario: id
                     }
@@ -137,6 +140,24 @@ let profileController = {
                     console.log(err)
                 })
      }} else {
+        const id = req.params.id;
+                const fecha = req.body.fecha; 
+                const DNI = req.body.DNI;
+                console.log("ESTAS ACAAAAAA")
+                db.User.update({
+                    fecha: fecha,
+                    DNI: DNI},
+                    {
+                    where: {
+                        id_usuario: id
+                    }
+                })
+                .then(function (result) {
+                    return res.redirect(`/users/perfil/${id}`)
+                })
+                .catch(function (err) {
+                    console.log(err)
+                })
      }
     },
     logout: function(req,res){

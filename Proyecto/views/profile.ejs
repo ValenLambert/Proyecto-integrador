@@ -12,13 +12,13 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="<%= User.foto %>" alt="foto de perfil" class="foto-perfil">
+				<img src="<%= usuario.foto %>" alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title USUARIO "> <%= User.email %>
+					<h1 class="main-title USUARIO "> <%= usuario.email %>
 						<% if (locals.user != undefined) { %>
-							<a href="/users/edit/<%= User.id_usuario%>">
+							<a href="/users/edit/<%= usuario.id_usuario%>">
 								<i class="fas fa-cog"></i>
 								Editar perfil
 							</a>
@@ -29,8 +29,8 @@
 				</div>
 				<div>
 					<ul class="infoUsuario">
-						<li><%= User.email %></li>
-						<li> productos cargados: <%= User.products.lenght %></li>
+						<li><%= usuario.email %></li>
+						<li> productos cargados: <%= usuario.products.lenght %></li>
 						<!-- esto chequear si es necesario:  -->
 					    <!-- <li> seguidores: 200</li>
 						<li> comentarios: 3</li> -->
@@ -48,17 +48,17 @@
 				<h2 class="products-title">Mis productos: </h2>
 			</div>
 			<!-- Show mis productos -->
-			<% for( let i = 0; User.products.lenght ; i++ ) { %>
+			<% for( let i = 0; usuario.products.lenght ; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/detail/<%= User.products[i].id_producto %>">
+						<a href="/product/detail/<%= usuario.products[i].dataValues.id_producto %>">
 							<figure class="product-box_image">
-								<img src="<%= User.products[i].foto_producto  %>" alt="cafetera moulinex">
+								<img src="<%= usuario.products[i].dataValues.foto_producto  %>" alt="cafetera moulinex">
 							</figure>
 							<article class="product-box_data ">
-								<h2 class="PRODUCTOS"><%= User.product[i].nombre %></h2>
-								<p class="DESCRIPCION"><%= User.product[i].descripcion %></p>
-								<p class="DESCRIPCION">  Comentarios: <%= User.product.comments[i].lenght %></p>
+								<h2 class="PRODUCTOS"><%= usuario.product[i].dataValues.nombre %></h2>
+								<p class="DESCRIPCION"><%= usuario.product[i].dataValues.descripcion %></p>
+								<p class="DESCRIPCION">  Comentarios: <%= usuario.product[i].dataValues.comments[i].lenght %></p>
 							</article>
 						</a>
 					</section>
