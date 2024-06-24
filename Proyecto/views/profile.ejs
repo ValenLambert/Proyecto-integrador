@@ -48,7 +48,7 @@
 				<h2 class="products-title">Mis productos: </h2>
 			</div>
 			<!-- Show mis productos -->
-			<% for( let i = 0; usuario.products.lenght ; i++ ) { %>
+			<% for( let i = 0; i< usuario.products.length ; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
 						<a href="/product/detail/<%= usuario.products[i].id_producto %>">
@@ -58,7 +58,7 @@
 							<article class="product-box_data ">
 								<h2 class="PRODUCTOS"><%= usuario.products[i].nombre %></h2>
 								<p class="DESCRIPCION"><%= usuario.products[i].descripcion %></p>
-								<p class="DESCRIPCION">  Comentarios: <%= usuario.comments[i].lenght %></p>
+								<p class="DESCRIPCION">  Comentarios: <%= usuario.comments.lenght %></p>
 							</article>
 						</a>
 					</section>
