@@ -208,10 +208,21 @@ const productController = {
         }
     },
     destroy: function (req, res) {
+        // buscamos el id del producto a borrar: 
         let id = req.params.id;
+        console.log("ACAAAAAA!!!1!11223##2!!", id);
+        // // agregue que se si se quiere elimanr ese producto, se eliminen antes tambien sus comentarios 
+        // // aunque directamente pusimos que no aparezca en la vista la opcion de borrar! LA COMENTO DIRECTO ? 
+        // let data = product.id_delUsuario
+        // if (req.session.user.id_usuario != data) {
+        //     return res.redirect('/');
+        // }
+        db.Comments.destroy({
+            where: { id_delProducto: id }
+        })
         db.Products.destroy({
             where: [
-                { id_producto: id }
+                { id_producto: id }, 
             ]
         })
             .then(() => {

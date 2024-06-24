@@ -13,11 +13,13 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title" id="editar" > <%=Products.nombre%></h2> 
+		<!-- chequeo que el boton de editar solo le aparezca si el susuario logueado fue quien publico ese producto  -->
 			<% if (locals.user != undefined && locals.user.id_usuario === Products.id_delUsuario) { %>
 				<p class="product-detail-description TITULOS buy-now-button" id="editar" > 
 					<a href="/product/edit/<%= Products.id_producto %>"> Editar</a> 
 				</p>
 			<% } %> 
+			<!-- chequeo que el boton de borrar solo le aparezca si el susuario logueado fue quien publico ese producto  -->
 			<% if (locals.user != undefined && locals.user.id_usuario === Products.id_delUsuario) { %>
 				<p class="product-detail-description TITULOS buy-now-button" style="color: red;" id="editar" > 
 					<form action="/product/delete/<%= Products.id_producto %>" method="POST"> 
@@ -52,7 +54,7 @@
 								Comentarios:
 							</p>
 							<% for (let i = 0; i < Products.comments.length; i++) { %>
-								<article>
+								<article class="fotoComentario" >
 										<img src="<%= Products.comments[i].user.foto %>" alt="Foto de perfil">
 										<div class="data">
 											<p class="user">

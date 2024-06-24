@@ -12,7 +12,7 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="<%= usuario.foto %>" alt="foto de perfil" class="foto-perfil">
+				<img src="<%= usuario.foto %>" alt="foto de perfil" class="foto-perfil" id="fotoPerfilEditado">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
@@ -28,12 +28,18 @@
 					
 				</div>
 				<div>
+					<!-- agregue que si no tiene productos, que lo avise -->
 					<ul class="infoUsuario">
 						<li><%= usuario.email %></li>
-						<li> Productos cargados: <%= usuario.products.length %></li>
-						<!-- esto chequear si es necesario:  -->
-					    <li> Seguidores: 200</li>
-						<li> Comentarios: 3</li> 
+						<% if (usuario.products.length === 0) { %>
+							<li>No tienes productos aún</li>
+						<% } else { %> 
+							<li>Productos cargados: <%= usuario.products.length %></li>
+							<!-- Esto se puede chequear si es necesario:  -->
+							<!-- <li>Seguidores: 200</li>  -->
+							<!-- CHEQUEARRRRR -->
+							<li> Comentarios: <%= usuario.comments.length %> </li>  
+						<% } %> 
 					</ul>
 				</div>
 			</div>
@@ -65,7 +71,8 @@
 							<article class="product-box_data ">
 								<h2 class="PRODUCTOS"><%= usuario.products[i].nombre %></h2>
 								<p class="DESCRIPCION"><%= usuario.products[i].descripcion %></p>
-								<p class="DESCRIPCION">  Comentarios: <%= usuario.comments.length %></p>
+								<!-- CHEQUEARRRRR -->
+								<p class="DESCRIPCION">  Comentarios: <%= usuario.products[i].length %></p>
 							</article>
 						</a>
 					</section>

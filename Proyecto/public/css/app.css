@@ -296,6 +296,10 @@ hr {
   background-color: #e8b595f4;
   border-radius: 8px;
   overflow: hidden;
+  width: 800px;
+  align-content: center;
+  margin: 12px;
+  border-color: #76441e;
 }
 
 .product-detail-img {
@@ -306,10 +310,11 @@ hr {
 }
 
 .product-detail-info {
-  border-right: 1px solid brown;
+  border-color: 1px solid brown;
   padding: 15px;
   /* height: 100%; */
   overflow: hidden;
+
   
 }
 
@@ -749,4 +754,13 @@ body {
   align-items: center; /* Centramos verticalmente */
 }
 
+.fotoComentario{
+  padding: 2px;
+}
+
+#fotoPerfilEditado {
+  border-radius: 50%;
+  width: 187px;
+  height: 149px;
+}
 /*NUEVO STYLE */
