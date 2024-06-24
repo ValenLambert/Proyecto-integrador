@@ -192,21 +192,15 @@ const productController = {
             return res.render("productEdit", { errors: resultValidation.mapped(), oldData: req.body, User: req.session.user })
         }
         else {
-            const id = req.params.id;
-            const foto_producto = req.body.imagen;
-            const nombre= req.body.nombre;
-            const descripcion= req.body.descripcion;
-            db.Products.update({
-                foto_producto:foto_producto,
-                nombre: nombre,
-                descripcion:descripcion
-            }, {
+            const id_producto = req.params.id;
+            const producto = req.body
+            db.Products.update( producto, {
                 where: {
-                    id_producto: id
+                    id_producto: id_producto
                 }
             })
                 .then(function (result) {
-                    return res.redirect(`/product/detail/${id}`)
+                    return res.redirect(`/product/detail/${id_producto}`)
                 })
                 .catch(function (err) {
                     console.log(err)
