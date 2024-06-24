@@ -19,18 +19,35 @@
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12 COLOR"> 
 				<form action="/users/edit/<%= User.id_usuario %>" method="POST">
-			
-					<label for="contraseña">Contraseña:</label><br>
-					<input type="password" id="contraseña" name="contraseña" value="" ><br>
+					<label class="label" for="email">Email:</label><br>
+					<input class="claseButton" type="email" id="email" name="email" value="<%= User.email %>" required><br>
+					<% if (locals.errors && errors.email) { %>
+						<div class="error-msg"><%= errors.email.msg %></div>
+					<% } %>
 
-					<label for="fecha_nacimiento">Fecha de nacimiento:</label><br>
-					<input type="date" id="fecha" name="fecha" value="<%= User.fecha %>" ><br>
+					<label  class="label" for="usuario">Usuario:</label><br>
+					<input  class="claseButton" type="text" id="usuario" name="usuario" value="<%= User.id_usuario %>" required><br>
+					<% if (locals.errors && errors.usuario) { %>
+                        <div class="error-msg"><%= errors.usuario.msg %></div>
+                    <% } %> 
 			
-					<label for="DNI">Nro de documento:</label><br>
-					<input type="number" id="DNI" name="DNI" value="<%= User.DNI %>" ><br>
+					<label class="label" for="usuario">Contraseña:</label><br>
+					<input  class="claseButton" type="password" id="contraseña" name="contraseña" value="" ><br>
+
+					<% if (locals.errors && errors.contraseña) { %>
+						<div class="error-msg" style="color: red; font-size: 15px;"><%= errors.contraseña.msg %></div>
+					<% } %> 
+
+					<label  class="label" for="fecha_nacimiento">Fecha de nacimiento:</label><br>
+					<input class="claseButton"  type="date" id="fecha" name="fecha" value="<%= User.fecha %>" ><br>
 			
+					<label  class="label" for="DNI">Nro de documento:</label><br>
+					<input class="claseButton" type="number" id="DNI" name="DNI" value="<%= User.DNI %>" ><br>
+
+					<label  class="label" for="foto">Foto de perfil:</label><br>
+					<input class="claseButton" type="text" id="foto" name="foto"  value="<%= locals.oldData && oldData.foto ? oldData.foto : " " %>"><br> <br>
 			
-					<input type="submit" value="Registrarse">
+					<input  class="claseButton" id="subrrayado" type="submit" value="Editar">
 			</h2>
 
 	<!-- footer -->

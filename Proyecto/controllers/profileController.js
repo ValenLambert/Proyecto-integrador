@@ -114,20 +114,29 @@ let profileController = {
             }
     },
     changes: function (req, res) {
-        if (req.body.contraseña != undefined) {
+        if (req.body.contraseña != "") {
             const resultValidation =  validationResult(req)
             // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body
             if (!resultValidation.isEmpty()){
-            console.log("errores: ", JSON.stringify(resultValidation,null,4));
+            console.log("ESTAS ACAA MIRA ESTO errores: ", JSON.stringify(resultValidation,null,4));
             return res.render ("profileEdit", {
                 errors: resultValidation.mapped(),
                 oldData:req.body,
                 User:req.session.user
             })
             } else {
+                console.log("222 ESTAS ACAA MIRA ESTO errores: ", JSON.stringify(resultValidation,null,4));
                 const id = req.params.id;
-                const usuario = req.body; 
-                db.User.update(usuario,
+                const fecha = req.body.fecha; 
+                const DNI = req.body.DNI;
+                const contraseña = req.body.contraseña; 
+                const foto= req.body.foto
+                db.User.update({
+                    contraseña: bcrypt.hashSync(contraseña, 10),
+                    fecha: fecha,
+                    DNI: DNI,
+                    foto:foto
+                },
                     {
                     where: {
                         id_usuario: id
@@ -140,13 +149,18 @@ let profileController = {
                     console.log(err)
                 })
      }} else {
+        console.log("3333 ESTAS ACAA MIRA ESTO errores: ");
+
         const id = req.params.id;
                 const fecha = req.body.fecha; 
                 const DNI = req.body.DNI;
+                const foto = req.body.foto;
                 console.log("ESTAS ACAAAAAA")
                 db.User.update({
                     fecha: fecha,
-                    DNI: DNI},
+                    DNI: DNI,
+                    foto:foto
+                },
                     {
                     where: {
                         id_usuario: id

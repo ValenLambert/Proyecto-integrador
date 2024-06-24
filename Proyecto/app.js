@@ -9,7 +9,6 @@ const session = require("express-session")
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/profile');
-var headerLogueadoRouter = require ("./routes/headerLogueado");
 var productRouter = require ("./routes/product");
 const { log } = require('console');
 const db = require('./database/models');
@@ -77,7 +76,6 @@ app.use(function(req,res,next){
   }
 })
 
-app.use('/loggeado', headerLogueadoRouter);
 app.use('/product', productRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

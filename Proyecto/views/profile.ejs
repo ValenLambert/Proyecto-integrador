@@ -17,7 +17,7 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title USUARIO "> <%= usuario.email %>
-						<% if (locals.user != undefined) { %>
+						<% if (locals.user != undefined && locals.user.id_usuario === usuario.id_usuario) { %>
 							<a href="/users/edit/<%= usuario.id_usuario%>">
 								<i class="fas fa-cog"></i>
 								Editar perfil
