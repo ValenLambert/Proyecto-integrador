@@ -45,15 +45,15 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Mis productos: </h2>
+				<h2 class="products-title" id="misProductos" >    Mis productos: </h2>
 			</div>
 			<!-- Show mis productos -->
 			<% for( let i = 0; i< usuario.products.length ; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
+					<section class="product-box" id="productoPerfil">
 						<a href="/product/detail/<%= usuario.products[i].id_producto %>">
 							<figure class="product-box_image">
-								<img src="<%= usuario.products[i].foto_producto  %>" alt="cafetera moulinex">
+								<img src="<%= usuario.products[i].foto_producto  %>" alt="<%= usuario.products[i].nombre %>">
 							</figure>
 							<article class="product-box_data ">
 								<h2 class="PRODUCTOS"><%= usuario.products[i].nombre %></h2>

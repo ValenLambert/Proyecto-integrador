@@ -10,7 +10,7 @@
 
 
 	<!-- Novedades -->
-	<div class="container products-wrapper">
+	<div class="container products-wrapper" id="products-wrapperEditado" >
 		<div class="row PRODUCTOS">
 			<div class="col-12">
 				<h2 class="products-title TITULOS alignForms">Agregar productos</h2>
@@ -27,6 +27,7 @@
 					<div class=""> <%= errors.imagen.msg  %> </div> 
 					<% }   %>      
 					</div>
+					<br><br>
 					<label class="label" for="nombre">Nombre del Producto:</label>
 	<!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
 
@@ -43,7 +44,7 @@
 						<% if(locals.erros && errors.descripcion)  { %> 
 							<div> <%= errors.descripcion.msg  %></div>
 							<% } %>
-			
+			<br><br>
 			<!-- <input  class="claseButton" type="date" name="createdAt" placeholder="fecha de carga"><br><br> -->
 					<button class="claseButton" id="agregarProducto" type="submit">Agregar Producto</button>
 			</h2>

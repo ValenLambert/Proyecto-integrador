@@ -21,7 +21,7 @@
 			<% if (locals.user != undefined && locals.user.id_usuario === Products.id_delUsuario) { %>
 				<p class="product-detail-description TITULOS buy-now-button" style="color: red;" id="editar" > 
 					<form action="/product/delete/<%= Products.id_producto %>" method="POST"> 
-						<button type="submit" class="buy-now-button "  >Borrar producto </button>
+						<button type="submit" class="buy-now-button "  > Borrar producto </button>
 					</form>
 			
 				</p>
@@ -33,7 +33,7 @@
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
 			
-					<img src = "<%= Products.foto_producto %>" alt="" class="product-detail-img">
+					<img src = "<%= Products.foto_producto %>" alt="<%= Products.nombre %> " class="product-detail-img">
 			
 					<p class="product-detail-description DESCRIPCION">
 						<%= Products.descripcion %>
