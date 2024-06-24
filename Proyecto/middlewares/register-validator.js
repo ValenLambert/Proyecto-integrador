@@ -13,7 +13,7 @@ const registerValidation = [
                     where: { email: value }
                 }).then(user => {
                     if (user) {
-                        return new Error("El email ya está registrado");
+                        throw new Error("El email ya está registrado");
                     }
                 });
             }

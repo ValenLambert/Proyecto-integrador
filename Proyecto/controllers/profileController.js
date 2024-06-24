@@ -24,7 +24,6 @@ let profileController = {
         })
 
             .then(function (user) {
-                console.log("IMPRIMIR!!!!", JSON.stringify(user));
                 res.render("profile", {
                     User: req.session.user,
                     usuario: user,
@@ -129,14 +128,12 @@ let profileController = {
             const resultValidation = validationResult(req)
             // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body
             if (!resultValidation.isEmpty()) {
-                console.log("ESTAS ACAA MIRA ESTO errores: ", JSON.stringify(resultValidation, null, 4));
                 return res.render("profileEdit", {
                     errors: resultValidation.mapped(),
                     oldData: req.body,
                     User: req.session.user
                 })
             } else {
-                console.log("222 ESTAS ACAA MIRA ESTO errores: ", JSON.stringify(resultValidation, null, 4));
                 const id = req.params.id;
                 const fecha = req.body.fecha;
                 const DNI = req.body.DNI;
@@ -161,13 +158,10 @@ let profileController = {
                     })
             }
         } else {
-            console.log("3333 ESTAS ACAA MIRA ESTO errores: ");
-
             const id = req.params.id;
             const fecha = req.body.fecha;
             const DNI = req.body.DNI;
             const foto = req.body.foto;
-            console.log("ESTAS ACAAAAAA")
             db.User.update({
                 fecha: fecha,
                 DNI: DNI,

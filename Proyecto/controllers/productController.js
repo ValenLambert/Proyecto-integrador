@@ -51,17 +51,6 @@ const productController = {
                 });
         }
     },
-
-    // add: function (req, res) {
-    //     db.Products.findAll()
-    //     .then (function (data){
-    //         return res.render('productAdd', { Products: data })
-    //     })
-    //     .catch(function(error){
-    //         console.log(error);
-    //     })
-    // },
-
     create: function (req, res) {
         // Control de acceso
         if (req.session.user == undefined) {  // Si no hay un usuario logueado
@@ -111,7 +100,6 @@ const productController = {
                 //createdAt: new Date() // seria la fecha actual de creación del producto
             };
             //3) Guardar aquel producto
-            console.log("PRODUCTO", producto);
             db.Products.create(producto)
                 .then(function (producto) {
                     //4) Redirección
@@ -158,7 +146,6 @@ const productController = {
                 id_delUsuario: id_delUsuario,
                 comentario: data.comentario,
             }
-            console.log("COME", comentario);
             db.Comments.create(comentario)
                 .then(function (comentario) {
                     return res.redirect(`/product/detail/${id_delProducto}`);
@@ -210,13 +197,6 @@ const productController = {
     destroy: function (req, res) {
         // buscamos el id del producto a borrar: 
         let id = req.params.id;
-        console.log("ACAAAAAA!!!1!11223##2!!", id);
-        // // agregue que se si se quiere elimanr ese producto, se eliminen antes tambien sus comentarios 
-        // // aunque directamente pusimos que no aparezca en la vista la opcion de borrar! LA COMENTO DIRECTO ? 
-        // let data = product.id_delUsuario
-        // if (req.session.user.id_usuario != data) {
-        //     return res.redirect('/');
-        // }
         db.Comments.destroy({
             where: { id_delProducto: id }
         })
