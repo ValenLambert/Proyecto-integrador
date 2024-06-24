@@ -15,7 +15,9 @@ let profileController = {
             include: [
                 {
                     association: 'products',
-                    order: [['createdAt', 'DESC']] // Ordenar productos cronológicamente
+                    order: [['createdAt', 'DESC']],
+                    include: { association: 'comments' },
+
                 },
                 { association: 'comments' }
             ]
