@@ -28,14 +28,16 @@
 		<button class="btn-toggle-navbar">
 			<i class="fas fa-bars"></i>
 		</button>
-
+		<h2 class="products-title TITULOS" id="saludando"> ¡Hola <%=User.email%> !</h2>
 		<nav class="main-navbar">
 			<ul class="left-navbar">
 				<li class="TITULOS"><a href="/">Todos los productos</a></li>
 				<li class="TITULOS "> <a href="/product/add">Cargar productos</a> </li>
 			</ul>
 			<ul class="right-navbar TITULOS">
+				<!-- en vez de poner "mi perfil", que directamente aparezca su nombre de usuario -->
 				<li><a href="/users/perfil/<%= User.id_usuario%>">
+					<!-- en vez de poner "mi perfil", que directamente aparezca su nombre de usuario, o sea, el mail  -->
 						<%= User.email %> <i class="fas fa-user"></i>
 					</a>
 				</li>

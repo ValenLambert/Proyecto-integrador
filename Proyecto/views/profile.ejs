@@ -32,34 +32,36 @@
 					<ul class="infoUsuario">
 						<li><%= usuario.email %></li>
 						<% if (usuario.products.length === 0) { %>
-							<li>No tienes productos aún</li>
+							<br><li> No tienes productos aún! </li>
 						<% } else { %> 
-							<li>Productos cargados: <%= usuario.products.length %></li>
+							<br> <li>Productos cargados: <%= usuario.products.length %></li>
 							<!-- Esto se puede chequear si es necesario:  -->
 							<!-- <li>Seguidores: 200</li>  -->
 							<!-- CHEQUEARRRRR -->
-							<li> Comentarios: <%= usuario.comments.length %> </li>  
-						<% } %> 
+							<% } %>
+							<br> <li> Comentarios realizados por el usuario: <%= usuario.comments.length %> </li>  
+						 
 					</ul>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- /Datos del usuario -->
-
-	<!-- Mis productos -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<% if (locals.user != undefined && locals.user.id_usuario === usuario.id_usuario) { %>
-				<div class="col-12">
-					<h2 class="products-title" id="misProductos" >    Mis productos: </h2>
-				</div>
-				<% } else { %>
-					<div class="col-12">
-						<h2 class="products-title" id="misProductos">Productos publicados:</h2>
-					</div>
-				<% } %>
+	
+	
+	<% if (locals.user != undefined && locals.user.id_usuario === usuario.id_usuario) { %>
+		 <div class="col-12" id="misproductos"> 
 			
+			<h2 class="products-title" id="misProductos" >    Mis productos: </h2>
+		</div> <br><br>  
+		<br>
+		<% } else { %>
+				<h2 class="products-title" id="misProductos" >Productos publicados:</h2>
+		<% } %>
+	
+		<!-- Mis productos -->
+	<div class="container products-wrapper">
+		<div class="row" id="alinear">
 			<!-- Show mis productos -->
 			<% for( let i = 0; i< usuario.products.length ; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">

@@ -12,7 +12,8 @@ let productValidations = [
 
     body("descripcion")
         .notEmpty()
-        .withMessage("Debes escribir un tetxo descriptivo"),
+        .withMessage("Debes escribir un tetxo descriptivo")
+        .trim(), // para eliminar los eslpacios en blanco que puedan haber 
 
 
     body("imagen")

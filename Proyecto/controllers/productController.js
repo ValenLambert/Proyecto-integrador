@@ -194,7 +194,7 @@ const productController = {
         else {
             const id_producto = req.params.id;
             const producto = req.body
-            db.Products.update( producto, {
+            db.Products.update(producto, {
                 where: {
                     id_producto: id_producto
                 }
@@ -222,7 +222,7 @@ const productController = {
         })
         db.Products.destroy({
             where: [
-                { id_producto: id }, 
+                { id_producto: id },
             ]
         })
             .then(() => {

@@ -7,50 +7,46 @@
     <%- include('./partials/header') %>
 <% } %>
 <!-- /Header -->
-
-
 	<!-- Novedades -->
-	<div class="container products-wrapper" id="products-wrapperEditado" >
+	<h2 class="products-title TITULOS ">Agregar productos</h2>
+
+	<div class="container products-wrapper alinear" id="products-wrapperEditado" >
 		<div class="row PRODUCTOS">
-			<div class="col-12">
-				<h2 class="products-title TITULOS alignForms">Agregar productos</h2>
-			</div>
+
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12 PRODUCTOS alignForms"> 
 				<form action="/product/add" method="POST">
-
-					<label class="label" for="imagen">Imagen:</label>
-	 <!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
+					
+				<label class="label" for="imagen">Imagen:</label> <br> <br>
+				 <!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
 					<input class="claseButton" type="text" name="imagen" accept="image/*" placeholder="url de la imagen"  value="<%= locals.oldData && oldData.imagen ? oldData.imagen : '' %>"><br><br><br>
-	<!-- aqui preguntamos si hay errores en locals, y si el error coincide con el name del input. si hay enviamos el error en un div con class="error-msg" -->
+				<!-- aqui preguntamos si hay errores en locals, y si el error coincide con el name del input. si hay enviamos el error en un div con class="error-msg" -->
 				<% if (locals.errors && errors.imagen  )  { %>
-					<div class=""> <%= errors.imagen.msg  %> </div> 
+					<div class=" error"> <%= errors.imagen.msg  %> </div> 
 					<% }   %>      
-					</div>
-					<br><br>
+					</div> <br> <br><br><br>
+					
 					<label class="label" for="nombre">Nombre del Producto:</label>
-	<!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
-
-					<input class="claseButton"  type="text" id="nombre" name="nombre" placeholder="nombre"  value=" <%= locals.oldData && oldData.nombre ? oldData.nombre : ''  %>"><br><br><br>
-	<!-- preguntamos si hay errores en loclas y si los hay los enviamos  -->
+					<!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
+					<input class="claseButton"  type="text" id="nombre" name="nombre" placeholder=" Escriba el nombre"  value="<%= locals.oldData && oldData.nombre ? oldData.nombre : ''  %>"> 
+					<!-- preguntamos si hay errores en loclas y si los hay los enviamos  -->
 					<% if (locals.errors && errors.nombre )  { %> 
-						<div> <%= errors.nombre.msg  %>  </div>
+						<div class=" error"> <%= errors.nombre.msg  %>  </div>
 						<% } %>
 
-					<label class="label" for="descripcion">Descripción:</label><br>
-	<!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
-					<input class="claseButton"  type="text" name="descripcion" placeholder="escriba una descripcion "  value=" <%= locals.oldData && oldData.descripcion ? oldData.descripcion : '' %> "  ><br><br> 
-	<!-- preguntamos si hay errores en loclas y si los hay los enviamos  -->
+					<label class="label" for="descripcion">Descripción:</label>
+					<!-- en el value del input preguntamos si existe oldData en locals, y si coincide con el name del input, si lo hace, asignar el valor a value, sino value quedara vacio  -->
+			     <input class="claseButton"  type="text" name="descripcion" placeholder=" Escriba una descripcion"  value="<%= locals.oldData && oldData.descripcion ? oldData.descripcion : '' %>"><br><br> 
+					<!-- preguntamos si hay errores en loclas y si los hay los enviamos  -->
 						<% if(locals.erros && errors.descripcion)  { %> 
-							<div> <%= errors.descripcion.msg  %></div>
-							<% } %>
-			<br><br>
-			<!-- <input  class="claseButton" type="date" name="createdAt" placeholder="fecha de carga"><br><br> -->
+							<div class=" error" > <%= errors.descripcion.msg  %></div>
+							<% } %> <br>
+
+					<!-- <input  class="claseButton" type="date" name="createdAt" placeholder="fecha de carga"><br><br> NO HACE FALTA ESTO, YA SE AGREGA AUTOMATICAMENTE AL CREARSE -->
 					<button class="claseButton" id="agregarProducto" type="submit">Agregar Producto</button>
 			</h2>
 		</div>
-	</div>  <br><br><br><br><br><br><br><br><br><br>
-
+	</div>  <br><br><br><br><br><br><br><br>
 	<!-- footer -->
 	<%- include('./partials/footer') %>
 	<!-- /footer -->
