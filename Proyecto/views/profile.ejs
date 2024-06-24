@@ -51,14 +51,14 @@
 			<% for( let i = 0; usuario.products.lenght ; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/detail/<%= usuario.products[i].dataValues.id_producto %>">
+						<a href="/product/detail/<%= usuario.products[i].id_producto %>">
 							<figure class="product-box_image">
-								<img src="<%= usuario.products[i].dataValues.foto_producto  %>" alt="cafetera moulinex">
+								<img src="<%= usuario.products[i].foto_producto  %>" alt="cafetera moulinex">
 							</figure>
 							<article class="product-box_data ">
-								<h2 class="PRODUCTOS"><%= usuario.product[i].dataValues.nombre %></h2>
-								<p class="DESCRIPCION"><%= usuario.product[i].dataValues.descripcion %></p>
-								<p class="DESCRIPCION">  Comentarios: <%= usuario.product[i].dataValues.comments[i].lenght %></p>
+								<h2 class="PRODUCTOS"><%= usuario.products[i].nombre %></h2>
+								<p class="DESCRIPCION"><%= usuario.products[i].descripcion %></p>
+								<p class="DESCRIPCION">  Comentarios: <%= usuario.comments[i].lenght %></p>
 							</article>
 						</a>
 					</section>

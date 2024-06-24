@@ -22,7 +22,7 @@ let profileController = {
         })
 
         .then(function (user) {
-            console.log("IMPRIMIR!!!!",  user.products);
+            console.log("IMPRIMIR!!!!", JSON.stringify(user));
             res.render("profile", {User: req.session.user, usuario:user})
         })
         .catch(function(error) {
