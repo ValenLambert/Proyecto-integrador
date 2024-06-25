@@ -28,11 +28,11 @@
 					
 				</div>
 				<div>
-					<!-- agregue que si no tiene productos, que lo avise -->
+					<!-- agregue que si no tiene productos, que lo avise, y si los tiene, ahi si que muestre cuantos -->
 					<ul class="infoUsuario">
 						<li><%= usuario.email %></li>
 						<% if (usuario.products.length === 0) { %>
-							<br><li> No tienes productos aún! </li>
+							<br><li> No hay productos aún! </li>
 						<% } else { %> 
 							<br> <li>Productos cargados: <%= usuario.products.length %></li>
 							<!-- Esto se puede chequear si es necesario:  -->
