@@ -15,12 +15,13 @@ let profileController = {
             include: [
                 {
                     association: 'products',
-                    order: [['createdAt', 'DESC']],
                     include: { association: 'comments' },
 
                 },
                 { association: 'comments' }
-            ]
+            ],
+            order: [["products", 'createdAt', 'DESC']],
+
         })
 
             .then(function (user) {
